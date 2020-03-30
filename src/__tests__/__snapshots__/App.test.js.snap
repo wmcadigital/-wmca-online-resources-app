@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div
+      class="wdgt-page-hero text-center"
+      style="background-image: url(http://static.centro.org.uk/wmcaRedev/build/img/Peoples-stories-hero.jpg);"
+    >
+      <div
+        class="splash"
+      >
+        <h1>
+          Find an opportunity
+        </h1>
+      </div>
+      <div
+        class="wdgt-page-hero-overlay"
+      />
+    </div>
+    <div
+      class="container-wide bg-white pad-30"
+    >
+      <div
+        class="pure-g justify-between"
+      >
+        <div
+          class="pure-u-1 pure-u-md-1-4"
+        >
+          <div>
+            <div
+              class="container-wide bg-white"
+            >
+              <div
+                class="pure-g justify-between"
+              >
+                <div
+                  class="pure-u-1"
+                >
+                  <h2>
+                    Filter
+                  </h2>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      Provider:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      SupportFor:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      Areas:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      CourseArea:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      Level:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      Cost:
+                    </label>
+                  </div>
+                  <div
+                    class="wmca-form wdgt"
+                  >
+                    <label
+                      class="wmca-form-label filter-title"
+                    >
+                      Type:
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pure-u-1 pure-u-md-5-8"
+          id="stories"
+        >
+          <div>
+            Hello from results
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

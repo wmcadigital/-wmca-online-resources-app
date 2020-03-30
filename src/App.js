@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Header from './components/Header';
+import SideBarFilters from './components/sidebar/SidebarFilters';
+import Results from './components/results/Results';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="container-wide bg-white pad-30">
+        <div className="pure-g justify-between">
+          <div className="pure-u-1 pure-u-md-1-4">
+            <SideBarFilters />
+          </div>
+          <div className="pure-u-1 pure-u-md-5-8" id="stories">
+            <Results />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

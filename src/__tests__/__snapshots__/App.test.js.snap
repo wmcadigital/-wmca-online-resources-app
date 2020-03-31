@@ -50,6 +50,54 @@ exports[`should take a snapshot 1`] = `
                     >
                       Provider:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -59,6 +107,13 @@ exports[`should take a snapshot 1`] = `
                     >
                       SupportFor:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -68,6 +123,9 @@ exports[`should take a snapshot 1`] = `
                     >
                       Areas:
                     </label>
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -77,6 +135,36 @@ exports[`should take a snapshot 1`] = `
                     >
                       CourseArea:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -86,6 +174,20 @@ exports[`should take a snapshot 1`] = `
                     >
                       Level:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -95,6 +197,25 @@ exports[`should take a snapshot 1`] = `
                     >
                       Cost:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -104,6 +225,10 @@ exports[`should take a snapshot 1`] = `
                     >
                       Type:
                     </label>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
                   </div>
                 </div>
               </div>

@@ -1,6 +1,8 @@
 import React, { useReducer, useMemo, useEffect } from 'react';
 import { initialState, reducer, GlobalState, GlobalDispatch } from './store';
 import data from './data.json';
+import { FETCH_JOBS } from './actionTypes';
+import { setAllFiltersForElement } from './utils/utils';
 
 import Header from './components/Header';
 import SideBarFilters from './components/sidebar/SidebarFilters';
@@ -12,9 +14,11 @@ function App() {
   const storeContex = useMemo(() => ({ store }), [store]);
 
   const fetchData = () => {
-    return dispatch({
-      type: 'setAllJobsAfterFetch',
-      payload: data
+    setAllFiltersForElement(data).then(res => {
+      dispatch({
+        type: FETCH_JOBS,
+        payload: res
+      });
     });
   };
 
@@ -22,7 +26,7 @@ function App() {
     document.body.classList = 'bg-white app-blog';
     fetchData();
   }, []);
-  
+
   return (
     <div className="App">
       <Header />

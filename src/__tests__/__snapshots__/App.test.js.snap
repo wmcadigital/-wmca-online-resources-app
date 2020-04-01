@@ -50,54 +50,6 @@ exports[`should take a snapshot 1`] = `
                     >
                       Provider:
                     </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -105,15 +57,8 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      SupportFor:
+                      Opportunity:
                     </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -121,11 +66,8 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Areas:
+                      Category:
                     </label>
-                    <div />
-                    <div />
-                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -133,38 +75,8 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      CourseArea:
+                      Eligibility:
                     </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -172,22 +84,8 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Level:
+                      SkillLevel:
                     </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
                   </div>
                   <div
                     class="wmca-form wdgt"
@@ -195,40 +93,8 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Cost:
+                      Age:
                     </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                    <div />
-                  </div>
-                  <div
-                    class="wmca-form wdgt"
-                  >
-                    <label
-                      class="wmca-form-label filter-title"
-                    >
-                      Type:
-                    </label>
-                    <div />
-                    <div />
-                    <div />
-                    <div />
                   </div>
                 </div>
               </div>
@@ -239,9 +105,7 @@ exports[`should take a snapshot 1`] = `
           class="pure-u-1 pure-u-md-5-8"
           id="stories"
         >
-          <div>
-            Hello from results
-          </div>
+          <div />
         </div>
       </div>
     </div>

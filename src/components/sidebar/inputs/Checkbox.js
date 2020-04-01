@@ -6,7 +6,7 @@ const Checkbox = props => {
   const onInputChange = () => {
     onCheckboxUpdate(name);
   };
-
+  console.log('rendering');
   return (
     <div className="wmca-form">
       <span className="wmca-form__checkboxes pure-u-1">
@@ -14,7 +14,7 @@ const Checkbox = props => {
           {name}
           <input
             type="checkbox"
-            value={name}
+            value={name || 'Missing'}
             id={`${name}_${parent}`}
             onChange={() => {
               onInputChange();
@@ -34,9 +34,9 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  name: '',
+  name: 'Missing data',
   parent: '',
   onCheckboxUpdate: () => {}
 };
 
-export default Checkbox;
+export default React.memo(Checkbox);

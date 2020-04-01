@@ -2,7 +2,14 @@ import React from 'react';
 import FiltersGroup from './FiltersGroup';
 
 function SidebarFilters() {
-  const sidebarFilters = ['Provider', 'SupportFor', 'Areas', 'CourseArea', 'Level', 'Cost', 'Type'];
+  const sidebarFilters = [
+    'Provider',
+    'Opportunity',
+    'Category',
+    'Eligibility',
+    'SkillLevel',
+    'Age'
+  ];
 
   return (
     <div>

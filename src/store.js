@@ -1,4 +1,5 @@
 import React from 'react';
+import { FETCH_JOBS, UPDATE_SELECTED_FILTERS } from './actionTypes';
 
 const initialState = {
   allJobs: [],
@@ -8,8 +9,10 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'setAllJobsAfterFetch':
+    case FETCH_JOBS:
       return { ...state, allJobs: action.payload };
+    case UPDATE_SELECTED_FILTERS:
+      return { ...state, selectedFilters: action.payload };
     default:
       return state;
   }

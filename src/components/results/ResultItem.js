@@ -12,10 +12,10 @@ function ResultItem(props) {
             <span className="highlight">Provider </span>
             {provider}
           </li>
-          <li>
+          {/* <li>
             <span className="highlight">It runs from: </span>
             {from} - {to}
-          </li>
+          </li> */}
         </ul>
         <p>{summary}</p>
         <div className="text-right">
@@ -40,8 +40,7 @@ ResultItem.propTypes = {
   from: PropTypes.string,
   to: PropTypes.string,
   link: PropTypes.string,
-  summary: PropTypes.string,
-
+  summary: PropTypes.string
 };
 
 ResultItem.defaultProps = {

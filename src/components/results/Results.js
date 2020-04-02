@@ -13,7 +13,7 @@ function Results() {
     if (hasFilters) {
       allJobs.map(job => {
         // eslint-disable-next-line array-callback-return
-        if (job.filters.some(item => selectedFilters.includes(item))) {
+        if (selectedFilters.some(item => job.filters.includes(item))) {
           arr.push(job);
         }
       });
@@ -29,13 +29,7 @@ function Results() {
   console.log('RENDERING');
   return (
     <div>
-      <ResultsHeader
-        length={
-          selectedToRender && selectedToRender.length > 0
-            ? `${selectedToRender.length} results`
-            : 'Fetching data'
-        }
-      />
+      {/* <ResultsHeader length={selectedToRender.length} /> */}
       {selectedToRender &&
         selectedToRender.length > 0 &&
         selectedToRender.map(job => {

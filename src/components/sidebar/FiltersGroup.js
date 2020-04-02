@@ -19,10 +19,12 @@ function FiltersGroup(props) {
 
   return (
     <div className="wmca-form wdgt">
-      <label className="wmca-form-label filter-title">{filterName}:</label>
+      <label className="wmca-form-label filter-title">{filterName}</label>
       {filters &&
         filters.map(filter => {
-          return <Checkbox name={filter} parent={filterName} key={`${filterName}-${filter}`} />;
+          if (filter) {
+            return <Checkbox name={filter} parent={filterName} key={`${filterName}-${filter}`} />;
+          }
         })}
     </div>
   );

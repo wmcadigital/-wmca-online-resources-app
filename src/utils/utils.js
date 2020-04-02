@@ -1,5 +1,4 @@
 const getFiltersGroup = (data, filter) => {
-  console.log('getFiltersGroup');
   const allFilters = [];
   data.map(el => {
     return allFilters.push(el[filter]);
@@ -27,7 +26,7 @@ const getAllFilters = async data => {
   return [...unique].flat();
 };
 const setAllFiltersForElement = async data => {
-  const allFilters = [];
+  let allFilters = [];
   // eslint-disable-next-line array-callback-return
   data.map(el => {
     allFilters.push(
@@ -40,6 +39,7 @@ const setAllFiltersForElement = async data => {
     );
     // eslint-disable-next-line no-param-reassign
     el.filters = allFilters.flat();
+    allFilters = [];
   });
 
   return data;

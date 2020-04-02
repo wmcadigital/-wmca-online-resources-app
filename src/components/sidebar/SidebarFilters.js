@@ -3,12 +3,12 @@ import FiltersGroup from './FiltersGroup';
 
 function SidebarFilters() {
   const sidebarFilters = [
-    'Provider',
-    'Opportunity',
     'Category',
+    'Opportunity',
     'Eligibility',
     'SkillLevel',
-    'Age'
+    'Age',
+    'Provider',
   ];
 
   return (

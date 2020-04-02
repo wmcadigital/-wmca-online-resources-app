@@ -1,4 +1,5 @@
 const getFiltersGroup = (data, filter) => {
+  console.log('getFiltersGroup');
   const allFilters = [];
   data.map(el => {
     return allFilters.push(el[filter]);

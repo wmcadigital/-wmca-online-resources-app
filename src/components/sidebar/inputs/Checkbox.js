@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
+import { UPDATE_SELECTED_FILTERS } from '../../../actionTypes';
+import { GlobalState, GlobalDispatch } from '../../../store';
+
+
+
 const Checkbox = props => {
-  const { name, parent, onCheckboxUpdate } = props;
+  const { name, parent } = props;
+  const dispatcher = useContext(GlobalDispatch);
+  const globalState = useContext(GlobalState);
+  const { selectedFilters } = globalState.store;
   const onInputChange = () => {
-    onCheckboxUpdate(name);
+    let arr = selectedFilters;
+    if (arr.indexOf(name) < 0) {
+      arr = [...arr, name];
+    } else {
+      arr = arr.filter(el => el !== name);
+    }
+    dispatcher.dispatch({
+      type: UPDATE_SELECTED_FILTERS,
+      payload: arr
+    });
   };
-  console.log('rendering');
+
+  console.log('rendering checkbox');
   return (
     <div className="wmca-form">
       <span className="wmca-form__checkboxes pure-u-1">
@@ -29,14 +47,12 @@ const Checkbox = props => {
 
 Checkbox.propTypes = {
   name: PropTypes.string,
-  parent: PropTypes.string,
-  onCheckboxUpdate: PropTypes.instanceOf(Function)
+  parent: PropTypes.string
 };
 
 Checkbox.defaultProps = {
   name: 'Missing data',
-  parent: '',
-  onCheckboxUpdate: () => {}
+  parent: ''
 };
 
 export default React.memo(Checkbox);

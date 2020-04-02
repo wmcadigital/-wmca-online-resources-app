@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ResultsHeader(props) {
-  const { length } = props;
-  const results = length > 1 ? `${length} results` : `${length} result`;
-  const text = length > 0 ? results : 'Fetching data';
+  const { selectedToRender } = props;
+  const results =
+    selectedToRender && selectedToRender > 1
+      ? `${selectedToRender} results`
+      : `${selectedToRender} result`;
+
+  const text = selectedToRender > 0 ? results : 'Fetching data';
 
   return (
     <div>
@@ -14,11 +18,11 @@ function ResultsHeader(props) {
 }
 
 ResultsHeader.propTypes = {
-  length: PropTypes.string
+  selectedToRender: PropTypes.number
 };
 
 ResultsHeader.defaultProps = {
-  length: null
+  selectedToRender: null
 };
 
 export default ResultsHeader;

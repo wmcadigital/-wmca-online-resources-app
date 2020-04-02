@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ResultItem(props) {
-  const { id, name, provider, url, from, to, link, summary } = props;
+  const { name, provider, url, link, summary } = props;
   return (
     <>
       <article className="wdgt">
@@ -10,12 +10,11 @@ function ResultItem(props) {
         <ul>
           <li>
             <span className="highlight">Provider </span>
-            {provider}
+            <a className="btn-secondary" href={link}>
+              {provider}
+            </a>
+            <i className="icon-link-external icon-large" />
           </li>
-          {/* <li>
-            <span className="highlight">It runs from: </span>
-            {from} - {to}
-          </li> */}
         </ul>
         <p>{summary}</p>
         <div className="text-right">
@@ -33,23 +32,17 @@ function ResultItem(props) {
 }
 
 ResultItem.propTypes = {
-  id: PropTypes.number,
   name: PropTypes.string,
   provider: PropTypes.string,
   url: PropTypes.string,
-  from: PropTypes.string,
-  to: PropTypes.string,
   link: PropTypes.string,
   summary: PropTypes.string
 };
 
 ResultItem.defaultProps = {
-  id: null,
   name: null,
   provider: null,
   url: null,
-  from: null,
-  to: null,
   link: null,
   summary: null
 };

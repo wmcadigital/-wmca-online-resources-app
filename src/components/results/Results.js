@@ -11,8 +11,8 @@ function Results() {
   const makeIt = useCallback(() => {
     const arr = [];
     if (hasFilters) {
+      // eslint-disable-next-line array-callback-return
       allJobs.map(job => {
-        // eslint-disable-next-line array-callback-return
         if (selectedFilters.some(item => job.filters.includes(item))) {
           arr.push(job);
         }
@@ -29,7 +29,10 @@ function Results() {
   console.log('RENDERING');
   return (
     <div>
-      {/* <ResultsHeader length={selectedToRender.length} /> */}
+      {selectedToRender && selectedToRender.length > 0 && (
+        <ResultsHeader selectedToRender={selectedToRender.length} />
+      )}
+
       {selectedToRender &&
         selectedToRender.length > 0 &&
         selectedToRender.map(job => {

@@ -22,9 +22,9 @@ function FiltersGroup(props) {
       <label className="wmca-form-label filter-title">{filterName}</label>
       {filters &&
         filters.map(filter => {
-          if (filter) {
-            return <Checkbox name={filter} parent={filterName} key={`${filterName}-${filter}`} />;
-          }
+          return (
+            filter && <Checkbox name={filter} parent={filterName} key={`${filterName}-${filter}`} />
+          );
         })}
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useReducer, useMemo, useEffect } from 'react';
 import { initialState, reducer, GlobalState, GlobalDispatch } from './store';
-import data from './data.json';
 import { FETCH_JOBS } from './actionTypes';
 import { setAllFiltersForElement } from './utils/utils';
 
@@ -8,18 +7,25 @@ import Header from './components/Header';
 import SideBarFilters from './components/sidebar/SidebarFilters';
 import Results from './components/results/Results';
 
+const FETCHURL =
+  'https://beta.wmca.org.uk/what-we-do/productivity-and-skills/online-resources?alttemplate=onlineResourcesJSON';
+
 function App() {
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContex = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContex = useMemo(() => ({ store }), [store]);
 
   const fetchData = () => {
-    setAllFiltersForElement(data).then(res => {
-      dispatch({
-        type: FETCH_JOBS,
-        payload: res
+    return fetch(FETCHURL)
+      .then(res => res.json())
+      .then(jsn => {
+        setAllFiltersForElement(jsn).then(res => {
+          dispatch({
+            type: FETCH_JOBS,
+            payload: res
+          });
+        });
       });
-    });
   };
 
   useEffect(() => {

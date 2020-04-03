@@ -48,7 +48,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Provider:
+                      Category
                     </label>
                   </div>
                   <div
@@ -57,7 +57,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Opportunity:
+                      Opportunity
                     </label>
                   </div>
                   <div
@@ -66,7 +66,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Category:
+                      Eligibility
                     </label>
                   </div>
                   <div
@@ -75,7 +75,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Eligibility:
+                      SkillLevel
                     </label>
                   </div>
                   <div
@@ -84,7 +84,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      SkillLevel:
+                      Age
                     </label>
                   </div>
                   <div
@@ -93,7 +93,7 @@ exports[`should take a snapshot 1`] = `
                     <label
                       class="wmca-form-label filter-title"
                     >
-                      Age:
+                      Provider
                     </label>
                   </div>
                 </div>

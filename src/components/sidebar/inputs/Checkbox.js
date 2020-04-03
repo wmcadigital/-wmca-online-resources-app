@@ -24,7 +24,6 @@ const Checkbox = props => {
     });
   };
 
-  console.log('rendering checkbox');
   return (
     <div className="wmca-form">
       <span className="wmca-form__checkboxes pure-u-1">

@@ -26,7 +26,6 @@ function Results() {
   useEffect(() => {
     makeIt();
   }, [makeIt]);
-  console.log('RENDERING');
   return (
     <div>
       {selectedToRender && selectedToRender.length > 0 && (

@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-// import { UPDATE_SELECTED_FILTERS } from '../../actionTypes';
 import { getFiltersGroup } from '../../utils/utils';
 import { GlobalState } from '../../store';
 import Checkbox from './inputs/Checkbox';
@@ -15,7 +13,7 @@ function FiltersGroup(props) {
 
   React.useEffect(() => {
     setAllFilters(getFiltersGroup(allJobs, filterName));
-  }, [allJobs, getFiltersGroup]);
+  }, [allJobs, filterName]);
 
   return (
     <div className="wmca-form wdgt">

@@ -2,7 +2,6 @@ import React, { useReducer, useMemo, useEffect } from 'react';
 import { initialState, reducer, GlobalState, GlobalDispatch } from './store';
 import { FETCH_JOBS } from './actionTypes';
 import { setAllFiltersForElement } from './utils/utils';
-import data from './data.json'
 
 import Header from './components/Header';
 import SideBarFilters from './components/sidebar/SidebarFilters';

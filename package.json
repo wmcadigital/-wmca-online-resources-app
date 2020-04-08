@@ -10,6 +10,7 @@
     "array-flat-polyfill": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "yarn": "^1.22.4"
@@ -27,7 +28,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie >= 9"
     ],
     "development": [
       "last 1 chrome version",

@@ -1,5 +1,3 @@
-import 'array-flat-polyfill';
-
 const getFiltersGroup = (data, filter) => {
   const allFilters = [];
   data.map(el => {

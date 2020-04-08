@@ -7,7 +7,6 @@
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^10.0.0",
     "@welldone-software/why-did-you-render": "^4.0.6",
-    "array-flat-polyfill": "^1.0.1",
     "core-js": "^3.6.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
@@ -29,14 +28,13 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all",
-      "ie >= 9"
+      "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version",
-      "last 1 ie version"
+      "ie 11"
     ]
   },
   "devDependencies": {

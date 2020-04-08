@@ -4,9 +4,7 @@ const Header = () => (
   <div
     className="wdgt-page-hero text-center"
     style={{
-      backgroundImage:
-        'url(http://static.centro.org.uk/wmcaRedev/build/img/Peoples-stories-hero.jpg)'
-    }}
+      backgroundImage: 'url(http://static.centro.org.uk/wmcaRedev/build/img/Peoples-stories-hero.jpg)' }}
   >
     <div className="splash">
       <h1>Find an opportunity</h1>

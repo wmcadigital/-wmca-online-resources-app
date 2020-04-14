@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { UPDATE_SELECTED_FILTERS } from '../../../actionTypes';
 import { GlobalState, GlobalDispatch } from '../../../store';
 
-
-
 const Checkbox = props => {
   const { name, parent } = props;
   const dispatcher = useContext(GlobalDispatch);

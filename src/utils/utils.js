@@ -45,6 +45,6 @@ const setAllFiltersForElement = async data => {
   return data;
 };
 
-export default getAllFilters;
+// export default getAllFilters;
 
 export { getFiltersGroup, getAllFilters, setAllFiltersForElement };

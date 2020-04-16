@@ -1,7 +1,7 @@
 import React from 'react';
 
 const initialState = {
-  Age: '',
+  Opportunity: '',
   Eligibility: ''
 };
 

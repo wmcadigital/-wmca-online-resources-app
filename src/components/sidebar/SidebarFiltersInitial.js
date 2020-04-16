@@ -34,6 +34,7 @@ function SidebarFiltersInitial() {
   };
 
   useEffect(() => {
+    console.log('storeContex.store',storeContex.store);
     if (storeContex.store.Eligibility !== '' && storeContex.store.Opportunity !== '') {
       toggleCanSubbmit(true);
     }

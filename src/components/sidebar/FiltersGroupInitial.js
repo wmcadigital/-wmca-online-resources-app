@@ -1,16 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getFiltersGroup } from '../../utils/utils';
 import { GlobalState } from '../../store';
 import Radio from './inputs/Radio';
+import { FiltersState, FiltersDispatch } from './SidebarStore';
 
-function FiltersGroup(props) {
+function FiltersGroupInitial(props) {
   const { filterName } = props;
+  const filtersState = useContext(FiltersState);
+  const filterDispatch = useContext(FiltersDispatch);
   const globalState = useContext(GlobalState);
-
   const { allJobs } = globalState.store;
-  const [filters, setAllFilters] = useState([]);
-
+  const [filters, setAllFilters] = useState();
+  const setSelectedFilters = (value, parent) => {
+    filterDispatch.dispatch({
+      type: 'SET_INITIAL_FILTERS',
+      payload: {
+        parent,
+        value
+      }
+    });
+  };
   React.useEffect(() => {
     setAllFilters(getFiltersGroup(allJobs, filterName));
   }, [allJobs, filterName]);
@@ -25,7 +35,13 @@ function FiltersGroup(props) {
           filters.map((filter, i) => {
             return (
               filter && (
-                <Radio int={i} name={filter} parent={filterName} key={`${filterName}-${filter}`} />
+                <Radio
+                  setSelectedFilters={setSelectedFilters}
+                  int={i}
+                  name={filter}
+                  parent={filterName}
+                  key={`${filterName}-${filter}`}
+                />
               )
             );
           })}
@@ -34,12 +50,12 @@ function FiltersGroup(props) {
   );
 }
 
-export default FiltersGroup;
+export default React.memo(FiltersGroupInitial);
 
-FiltersGroup.propTypes = {
+FiltersGroupInitial.propTypes = {
   filterName: PropTypes.string
 };
 
-FiltersGroup.defaultProps = {
+FiltersGroupInitial.defaultProps = {
   filterName: ''
 };

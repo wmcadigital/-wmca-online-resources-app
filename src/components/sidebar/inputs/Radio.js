@@ -1,25 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { UPDATE_SELECTED_FILTERS } from '../../../actionTypes';
-import { GlobalState, GlobalDispatch } from '../../../store';
-
 const Radio = props => {
-  const { name, parent, int } = props;
-  const dispatcher = useContext(GlobalDispatch);
-  const globalState = useContext(GlobalState);
-  const { selectedFilters } = globalState.store;
-  const onInputChange = () => {
-    // let arr = selectedFilters;
-    // if (arr.indexOf(name) < 0) {
-    //   arr = [...arr, name];
-    // } else {
-    //   arr = arr.filter(el => el !== name);
-    // }
-    // dispatcher.dispatch({
-    //   type: UPDATE_SELECTED_FILTERS,
-    //   payload: arr
-    // });
+  const { name, parent, int, setSelectedFilters } = props;
+  const onInputChange = e => {
+    setSelectedFilters(e.target.value, parent);
   };
 
   return (
@@ -31,8 +16,8 @@ const Radio = props => {
           name={`radio_${parent}`}
           value={name || 'Missing'}
           id={`radio_${int}_${parent}`}
-          onChange={() => {
-            onInputChange();
+          onChange={e => {
+            onInputChange(e);
           }}
         />
         <span className="wmca-form__radio-checkmark"> </span>

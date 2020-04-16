@@ -1,42 +1,40 @@
 import React, { useReducer, useMemo, useEffect, useState, useContext } from 'react';
 import FiltersGroup from './FiltersGroupInitial';
-import { GlobalState } from '../../store';
+import { GlobalState, GlobalDispatch } from '../../store';
 import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarStore';
 
 function SidebarFiltersInitial() {
-  const sidebarFilters = ['Opportunity', 'Age'];
-
+  const sidebarFilters = ['Opportunity', 'Eligibility'];
   const jobs = useContext(GlobalState);
-  let { allJobs } = jobs.store;
-  console.log('jobsjobsjobsjobs:', jobs);
+  const dispatcher = useContext(GlobalDispatch);
+  const { allJobs } = jobs.store;
 
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContex = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContex = useMemo(() => ({ store }), [store]);
   const [canSubmit, toggleCanSubbmit] = useState(false);
-  const selected = Object.values(storeContex.store);
   const onClick = () => {
     let test = allJobs;
-    if(storeContex.store.Opportunity) {
-      test = test.filter((elem) => {
-        return elem.filters.indexOf(storeContex.store.Opportunity) > 0 ;
-      })
+    if (storeContex.store.Opportunity) {
+      test = test.filter(elem => {
+        return elem.filters.indexOf(storeContex.store.Opportunity) > 0;
+      });
     }
 
-    if(storeContex.store.Age) {
-      test = test.filter((elem) => {
-        return elem.filters.indexOf(storeContex.store.Age) > 0 ;
-      })
+    if (storeContex.store.Eligibility) {
+      test = test.filter(elem => {
+        return elem.filters.indexOf(storeContex.store.Eligibility) > 0;
+      });
     }
 
-    console.log(test);
-
-    
-
+    dispatcher.dispatch({
+      type: 'SET_INITIAL_JOBS',
+      payload: test
+    });
   };
 
   useEffect(() => {
-    if (storeContex.store.Age !== '' && storeContex.store.Opportunity !== '') {
+    if (storeContex.store.Eligibility !== '' && storeContex.store.Opportunity !== '') {
       toggleCanSubbmit(true);
     }
   }, [storeContex]);

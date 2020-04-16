@@ -8,12 +8,12 @@ function FiltersGroup(props) {
   const { filterName } = props;
   const globalState = useContext(GlobalState);
 
-  const { allJobs } = globalState.store;
+  const { selectedJobs } = globalState.store;
   const [filters, setAllFilters] = useState([]);
 
   React.useEffect(() => {
-    setAllFilters(getFiltersGroup(allJobs, filterName));
-  }, [allJobs, filterName]);
+    setAllFilters(getFiltersGroup(selectedJobs, filterName));
+  }, [selectedJobs, filterName]);
 
   return (
     <div className="wmca-form wdgt">

@@ -8,9 +8,9 @@ const Checkbox = props => {
   const { name, parent } = props;
   const dispatcher = useContext(GlobalDispatch);
   const globalState = useContext(GlobalState);
-  const { selectedFilters } = globalState.store;
+  const { selectedJobs } = globalState.store;
   const onInputChange = () => {
-    let arr = selectedFilters;
+    let arr = selectedJobs;
     if (arr.indexOf(name) < 0) {
       arr = [...arr, name];
     } else {

@@ -1,22 +1,31 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { GlobalState } from '../../store';
 import ResultItem from './ResultItem';
 import ResultsHeader from './ResultsHeader';
 
 function Results() {
   const jobs = useContext(GlobalState);
-  const { selectedFilters, allJobs, showResults } = jobs.store;
-  const hasFilters = selectedFilters.length > 0;
-  const [selectedToRender, setSelecteToRender] = useState();
-  const makeIt = useCallback(() => {
-    const arr = [];
-    
-  }, [allJobs, hasFilters, selectedFilters]);
+  const { selectedJobs } = jobs.store;
+  const hasFilters = selectedJobs.length > 0;
 
-  useEffect(() => {
-    makeIt();
-  }, [makeIt]);
-  return <div>{showResults && 'Results:'}</div>;
+  return (
+    <div>
+      <ResultsHeader selectedToRender={selectedJobs.length}  />
+      {hasFilters &&
+        selectedJobs.map(job => {
+          return (
+            <ResultItem
+              key={`${job.Link}_${job.Url}`}
+              name={job.Name}
+              provider={job.Provider}
+              url={job.Url}
+              link={job.Link}
+              summary={job.Summary}
+            />
+          );
+        })}
+    </div>
+  );
 }
 
 export default Results;

@@ -5,9 +5,10 @@ import { GlobalState } from '../../store';
 
 const Sidebar = () => {
   const globalState = useContext(GlobalState);
-  const show = globalState.showResults;
+  const { selectedJobs } = globalState.store;
+  const hasFilters = selectedJobs.length > 0;
 
-  return <div>{show ? <SideBarFilters /> : <SideBarFiltersInitial />}</div>;
+  return <div>{hasFilters ? <SideBarFilters /> : <SideBarFiltersInitial />}</div>;
 };
 
 export default Sidebar;

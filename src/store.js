@@ -16,7 +16,9 @@ const reducer = (state, action) => {
     case UPDATE_SELECTED_FILTERS:
       return { ...state, selectedFilters: action.payload };
     case UPDATE_INITIAL_JOBS:
-      return { ...state, initialFilteredJobs: action.payload}
+      return { ...state, initialFilteredJobs: action.payload };
+    case 'SET_INITIAL_JOBS':
+      return { ...state, selectedJobs: action.payload };
     default:
       return state;
   }

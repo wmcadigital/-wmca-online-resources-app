@@ -5,14 +5,15 @@ import ResultsHeader from './ResultsHeader';
 
 function Results() {
   const jobs = useContext(GlobalState);
-  const { selectedJobs } = jobs.store;
-  const hasFilters = selectedJobs.length > 0;
+  const { selectedJobs, secondFilterJobs } = jobs.store;
+  const opportunitiesToDisplay = secondFilterJobs.length > 0 ? secondFilterJobs : selectedJobs;
+  const hasFilters = opportunitiesToDisplay.length > 0;
 
   return (
     <div>
-      <ResultsHeader selectedToRender={selectedJobs.length}  />
+      <ResultsHeader selectedToRender={opportunitiesToDisplay.length} />
       {hasFilters &&
-        selectedJobs.map(job => {
+        opportunitiesToDisplay.map(job => {
           return (
             <ResultItem
               key={`${job.Link}_${job.Url}`}

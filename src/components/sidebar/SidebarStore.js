@@ -2,7 +2,10 @@ import React from 'react';
 
 const initialState = {
   Opportunity: '',
-  Eligibility: ''
+  Eligibility: '',
+  Category: '',
+  Age: '',
+  SkillLevel: ''
 };
 
 const reducer = (state, action) => {

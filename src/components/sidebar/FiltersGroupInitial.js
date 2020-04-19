@@ -1,13 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getFiltersGroup } from '../../utils/utils';
 import { GlobalState } from '../../store';
 import Radio from './inputs/Radio';
-import { FiltersState, FiltersDispatch } from './SidebarStore';
+import { FiltersDispatch } from './SidebarStore';
 
 function FiltersGroupInitial(props) {
   const { filterName } = props;
-  const filtersState = useContext(FiltersState);
   const filterDispatch = useContext(FiltersDispatch);
   const globalState = useContext(GlobalState);
   const { allJobs } = globalState.store;

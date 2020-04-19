@@ -8,11 +8,11 @@ function ResultsHeader(props) {
       ? `${selectedToRender} results`
       : `${selectedToRender} result`;
 
-  const text = selectedToRender > 0 ? results : 'Fetching data';
+  const title = selectedToRender > 0 ? results : `No Results for => show selected tags`;
 
   return (
     <div>
-      <h2>{text}</h2>
+      <h2>{title}</h2>
     </div>
   );
 }

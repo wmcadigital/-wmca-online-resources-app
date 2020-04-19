@@ -3,13 +3,16 @@ import FiltersGroup from './FiltersGroup';
 import { GlobalDispatch } from '../../store';
 
 function SidebarFilters() {
-  const sidebarFilters = ['Category', 'Age', 'Eligibility', 'SkillLevel'];
+  const sidebarFilters = [
+    { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
+    { name: 'Age', displayName: 'Age', selector: 'radio' },
+    { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
+  ];
   const dispatcher = useContext(GlobalDispatch);
 
-  const onClick = () => {
-    console.log('here');
+  const onCancelClick = () => {
     dispatcher.dispatch({
-      type: 'SET_INITIAL_JOBS',
+      type: 'SET_INITIAL_FILTERED_JOBS',
       payload: []
     });
   };
@@ -19,11 +22,18 @@ function SidebarFilters() {
         <div className="pure-g justify-between">
           <div className="pure-u-1">
             <h2>Filter</h2>
-            <button type="submit" className="btn-primary solid" onClick={() => onClick()}>
+            <button type="submit" className="btn-primary solid" onClick={() => onCancelClick()}>
               <span>Cancel</span>
             </button>
             {sidebarFilters.map(filter => {
-              return <FiltersGroup key={filter} filterName={filter} />;
+              return (
+                <FiltersGroup
+                  key={filter.name}
+                  name={filter.name}
+                  displayName={filter.displayName}
+                  selector={filter.selector}
+                />
+              );
             })}
           </div>
         </div>

@@ -28,13 +28,12 @@ function SidebarFiltersInitial() {
     }
 
     dispatcher.dispatch({
-      type: 'SET_INITIAL_JOBS',
+      type: 'SET_INITIAL_FILTERED_JOBS',
       payload: test
     });
   };
 
   useEffect(() => {
-    console.log('storeContex.store',storeContex.store);
     if (storeContex.store.Eligibility !== '' && storeContex.store.Opportunity !== '') {
       toggleCanSubbmit(true);
     }

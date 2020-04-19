@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FiltersState } from '../SidebarStore';
 
 const Radio = props => {
   const { name, parent, int, setSelectedFilters } = props;
+  const filterState = useContext(FiltersState);
   const onInputChange = e => {
     setSelectedFilters(e.target.value, parent);
   };
-
+  console.log('rendering')
   return (
     <span className="wmca-form__radio pure-u-1" id={`radio_${parent}`}>
       <label htmlFor={`radio_${int}_${parent}`} className="wmca-form__radio-label">
@@ -19,6 +21,7 @@ const Radio = props => {
           onChange={e => {
             onInputChange(e);
           }}
+          checked={filterState.store[parent] === name}
         />
         <span className="wmca-form__radio-checkmark"> </span>
       </label>

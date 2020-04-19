@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 function DropDown(props) {
   const DEFAULT = 'select';
-  const { selectValue, parent } = props;
-  const [selectedValue, setSelected] = useState('select');
+  const { selectValue, parent, setSelectedFilters } = props;
+  const [selectedValue, setSelectedValue] = useState('select');
 
   function onSlectedChange(e) {
+    // setSelectedFilters
+    setSelectedValue(e.target.value, parent);
+    setSelectedFilters(e.target.value, parent);
+    console.log('onSlectedChange');
     // arr = arr.filter(el => el !== selectedValue);
   }
-
-
 
   return (
     <div className="pure-u-1">
@@ -18,6 +20,9 @@ function DropDown(props) {
         <select
           value={selectedValue}
           id={parent}
+          onChange={e => {
+            onSlectedChange(e);
+          }}
           onBlur={e => {
             onSlectedChange(e);
           }}
@@ -26,13 +31,7 @@ function DropDown(props) {
           {selectValue &&
             selectValue.map(select => {
               return (
-                <option
-                  onBlur={e => {
-                    onSlectedChange(e);
-                  }}
-                  value={select}
-                  key={`select_${select}`}
-                >
+                <option value={select} key={`select_${select}`}>
                   {select}
                 </option>
               );

@@ -16,6 +16,7 @@ const reducer = (state, action) => {
     case UPDATE_SELECTED_FILTERS:
       return { ...state, selectedFilters: action.payload };
     case UPDATE_ON_SECOND_FILTER:
+      console.log(action.payload)
       return { ...state, secondFilterJobs: action.payload };
     case 'SET_INITIAL_FILTERED_JOBS':
       return { ...state, selectedJobs: action.payload };

@@ -12,6 +12,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_INITIAL_FILTERS':
       return { ...state, [action.payload.parent]: action.payload.value };
+    case 'RESET':
+      return initialState;
     default:
       return state;
   }

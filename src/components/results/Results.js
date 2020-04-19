@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { GlobalState } from '../../store';
 import ResultItem from './ResultItem';
 import ResultsHeader from './ResultsHeader';
@@ -6,13 +6,20 @@ import ResultsHeader from './ResultsHeader';
 function Results() {
   const jobs = useContext(GlobalState);
   const { selectedJobs, secondFilterJobs } = jobs.store;
-  const opportunitiesToDisplay = secondFilterJobs.length > 0 ? secondFilterJobs : selectedJobs;
-  const hasFilters = opportunitiesToDisplay.length > 0;
+  const [opportunitiesToDisplay, setOpportunitiesToDisplay] = useState();
+  useEffect(() => {
+    if ((secondFilterJobs && secondFilterJobs.length > 0) || secondFilterJobs === null) {
+      setOpportunitiesToDisplay(secondFilterJobs);
+    } else {
+      setOpportunitiesToDisplay(selectedJobs);
+    }
+  }, [setOpportunitiesToDisplay, opportunitiesToDisplay, secondFilterJobs, selectedJobs]);
 
   return (
     <div>
-      <ResultsHeader selectedToRender={opportunitiesToDisplay.length} />
-      {hasFilters &&
+      {opportunitiesToDisplay && <ResultsHeader selectedToRender={opportunitiesToDisplay.length} />}
+      {opportunitiesToDisplay &&
+        opportunitiesToDisplay.length > 0 &&
         opportunitiesToDisplay.map(job => {
           return (
             <ResultItem
@@ -22,6 +29,7 @@ function Results() {
               url={job.Url}
               link={job.Link}
               summary={job.Summary}
+              filters={job.filters}
             />
           );
         })}

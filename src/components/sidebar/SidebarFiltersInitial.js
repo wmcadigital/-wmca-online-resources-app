@@ -14,22 +14,22 @@ function SidebarFiltersInitial() {
   const storeContex = useMemo(() => ({ store }), [store]);
   const [canSubmit, toggleCanSubbmit] = useState(false);
   const onClick = () => {
-    let test = allJobs;
+    let initial = allJobs;
     if (storeContex.store.Opportunity) {
-      test = test.filter(elem => {
+      initial = initial.filter(elem => {
         return elem.filters.indexOf(storeContex.store.Opportunity) > 0;
       });
     }
 
     if (storeContex.store.Eligibility) {
-      test = test.filter(elem => {
+      initial = initial.filter(elem => {
         return elem.filters.indexOf(storeContex.store.Eligibility) > 0;
       });
     }
 
     dispatcher.dispatch({
       type: 'SET_INITIAL_FILTERED_JOBS',
-      payload: test
+      payload: initial
     });
   };
 

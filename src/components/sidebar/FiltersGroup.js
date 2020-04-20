@@ -14,6 +14,7 @@ function FiltersGroup(props) {
   const { selectedJobs } = globalState.store;
   const [filters, setAllFilters] = useState([]);
   const setSelectedFilters = (value, parent) => {
+    console.log(value, parent);
     if (parent === 'Category') {
       filterDispatch.dispatch({
         type: 'RESET'
@@ -22,7 +23,7 @@ function FiltersGroup(props) {
         type: 'SET_INITIAL_FILTERS',
         payload: {
           parent,
-          value
+          value: value === 'select' ? '' : value
         }
       });
     } else {

@@ -1,18 +1,17 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getFiltersGroup } from '../../utils/utils';
-import { GlobalState, GlobalDispatch } from '../../store';
+import { GlobalState } from '../../store';
 import Radio from './inputs/Radio';
 import Dropdown from './inputs/Dropdown';
-import { FiltersDispatch, FiltersState } from './SidebarStore';
+import { FiltersDispatch } from './SidebarStore';
 
 function FiltersGroup(props) {
   const { name, displayName } = props;
   const globalState = useContext(GlobalState);
   const filterDispatch = useContext(FiltersDispatch);
-  const filterState = useContext(FiltersState);
 
-  const { selectedJobs, secondFilterJobs } = globalState.store;
+  const { selectedJobs } = globalState.store;
   const [filters, setAllFilters] = useState([]);
   const setSelectedFilters = (value, parent) => {
     if (parent === 'Category') {
@@ -40,9 +39,7 @@ function FiltersGroup(props) {
   React.useEffect(() => {
     setAllFilters(getFiltersGroup(selectedJobs, name));
   }, [selectedJobs, name]);
-  // React.useEffect(() => {
-  //   setAllFilters(getFiltersGroup(secondFilterJobs, name));
-  // }, [secondFilterJobs, name, cat]);
+
   return (
     <div className="wmca-form wdgt">
       <label className="wmca-form-label filter-title">{`${displayName}:  ${name}`}</label>

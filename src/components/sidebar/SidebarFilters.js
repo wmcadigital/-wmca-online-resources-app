@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo, useEffect, useState, useContext } from 'react';
+import React, { useReducer, useMemo, useEffect, useContext } from 'react';
 import FiltersGroup from './FiltersGroup';
 import { GlobalDispatch, GlobalState } from '../../store';
 import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarStore';

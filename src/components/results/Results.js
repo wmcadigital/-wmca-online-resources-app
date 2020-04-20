@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { GlobalState } from '../../store';
 import ResultItem from './ResultItem';
 import ResultsHeader from './ResultsHeader';
@@ -29,7 +29,6 @@ function Results() {
               url={job.Url}
               link={job.Link}
               summary={job.Summary}
-              filters={job.filters}
             />
           );
         })}

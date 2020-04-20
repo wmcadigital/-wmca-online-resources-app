@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ResultItem(props) {
-  const { name, provider, url, link, summary, filters } = props;
-  const style = { fontSize: '0.5em' };
+  const { name, provider, url, link, summary } = props;
   return (
     <>
-      <pre style={style}>{JSON.stringify(filters)}</pre>
       <article className="wdgt">
         <h2>{name}</h2>
         <ul>

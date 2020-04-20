@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function DropDown(props) {
@@ -7,11 +7,8 @@ function DropDown(props) {
   const [selectedValue, setSelectedValue] = useState('select');
 
   function onSlectedChange(e) {
-    // setSelectedFilters
     setSelectedValue(e.target.value, parent);
     setSelectedFilters(e.target.value, parent);
-    console.log('onSlectedChange');
-    // arr = arr.filter(el => el !== selectedValue);
   }
 
   return (
@@ -46,7 +43,8 @@ export default DropDown;
 
 DropDown.propTypes = {
   selectValue: PropTypes.instanceOf(Array),
-  parent: PropTypes.string
+  parent: PropTypes.string,
+  setSelectedFilters: PropTypes.instanceOf(Function).isRequired
 };
 
 DropDown.defaultProps = {

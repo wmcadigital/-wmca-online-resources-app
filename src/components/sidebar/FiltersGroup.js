@@ -22,7 +22,7 @@ function FiltersGroup(props) {
         type: 'SET_INITIAL_FILTERS',
         payload: {
           parent,
-          value
+          value: value === 'select' ? '' : value
         }
       });
     } else {

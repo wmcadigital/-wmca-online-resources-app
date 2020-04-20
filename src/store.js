@@ -1,10 +1,12 @@
 import React from 'react';
-import { FETCH_JOBS, UPDATE_SELECTED_FILTERS } from './actionTypes';
+import { FETCH_JOBS, UPDATE_SELECTED_FILTERS, UPDATE_ON_SECOND_FILTER } from './actionTypes';
 
 const initialState = {
   allJobs: [],
   selectedFilters: [],
-  selectedJobs: []
+  selectedJobs: [],
+  showResults: false,
+  secondFilterJobs: []
 };
 
 const reducer = (state, action) => {
@@ -13,6 +15,12 @@ const reducer = (state, action) => {
       return { ...state, allJobs: action.payload };
     case UPDATE_SELECTED_FILTERS:
       return { ...state, selectedFilters: action.payload };
+    case UPDATE_ON_SECOND_FILTER:
+      return { ...state, secondFilterJobs: action.payload };
+    case 'SET_INITIAL_FILTERED_JOBS':
+      return { ...state, selectedJobs: action.payload };
+    case 'TOGGLE_RESULTS':
+      return { ...state, showResults: action.payload };
     default:
       return state;
   }

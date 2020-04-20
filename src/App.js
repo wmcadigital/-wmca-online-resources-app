@@ -4,7 +4,8 @@ import { FETCH_JOBS } from './actionTypes';
 import { setAllFiltersForElement } from './utils/utils';
 
 import Header from './components/Header';
-import SideBarFilters from './components/sidebar/SidebarFilters';
+
+import Sidebar from './components/sidebar/Sidebar';
 import Results from './components/results/Results';
 
 const FETCHURL =
@@ -29,7 +30,6 @@ function App() {
   };
 
   useEffect(() => {
-    document.body.classList = 'bg-white app-blog';
     fetchData();
   }, []);
 
@@ -41,10 +41,10 @@ function App() {
           <div className="container-wide bg-white pad-30">
             <div className="pure-g justify-between">
               <div className="pure-u-1 pure-u-md-1-4">
-                <SideBarFilters />
+                <Sidebar />
               </div>
               <div className="pure-u-1 pure-u-md-5-8" id="stories">
-                <Results />
+                {storeContex.store.showResults && <Results />}
               </div>
             </div>
           </div>

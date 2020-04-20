@@ -2,28 +2,67 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getFiltersGroup } from '../../utils/utils';
 import { GlobalState } from '../../store';
-import Checkbox from './inputs/Checkbox';
+import Radio from './inputs/Radio';
+import Dropdown from './inputs/Dropdown';
+import { FiltersDispatch } from './SidebarStore';
 
 function FiltersGroup(props) {
-  const { filterName } = props;
+  const { name, displayName } = props;
   const globalState = useContext(GlobalState);
+  const filterDispatch = useContext(FiltersDispatch);
 
-  const { allJobs } = globalState.store;
+  const { selectedJobs } = globalState.store;
   const [filters, setAllFilters] = useState([]);
+  const setSelectedFilters = (value, parent) => {
+    if (parent === 'Category') {
+      filterDispatch.dispatch({
+        type: 'RESET'
+      });
+      filterDispatch.dispatch({
+        type: 'SET_INITIAL_FILTERS',
+        payload: {
+          parent,
+          value
+        }
+      });
+    } else {
+      filterDispatch.dispatch({
+        type: 'SET_INITIAL_FILTERS',
+        payload: {
+          parent,
+          value
+        }
+      });
+    }
+  };
 
   React.useEffect(() => {
-    setAllFilters(getFiltersGroup(allJobs, filterName));
-  }, [allJobs, filterName]);
+    setAllFilters(getFiltersGroup(selectedJobs, name));
+  }, [selectedJobs, name]);
 
   return (
     <div className="wmca-form wdgt">
-      <label className="wmca-form-label filter-title">{filterName}</label>
-      {filters &&
-        filters.map(filter => {
+      <label name={name} id={name} className="wmca-form-label filter-title">
+        {`${displayName}`}
+      </label>
+      {filters && name === 'Category' ? (
+        <Dropdown setSelectedFilters={setSelectedFilters} selectValue={filters} parent={name} />
+      ) : (
+        filters &&
+        filters.map((filter, i) => {
           return (
-            filter && <Checkbox name={filter} parent={filterName} key={`${filterName}-${filter}`} />
+            filter && (
+              <Radio
+                setSelectedFilters={setSelectedFilters}
+                int={i}
+                name={filter}
+                parent={name}
+                key={`${name}-${filter}`}
+              />
+            )
           );
-        })}
+        })
+      )}
     </div>
   );
 }
@@ -31,9 +70,13 @@ function FiltersGroup(props) {
 export default FiltersGroup;
 
 FiltersGroup.propTypes = {
-  filterName: PropTypes.string
+  name: PropTypes.string,
+  displayName: PropTypes.string,
+  selector: PropTypes.string
 };
 
 FiltersGroup.defaultProps = {
-  filterName: ''
+  name: '',
+  displayName: '',
+  selector: ''
 };

@@ -19,6 +19,8 @@ const reducer = (state, action) => {
       return { ...state, secondFilterJobs: action.payload };
     case 'SET_INITIAL_FILTERED_JOBS':
       return { ...state, selectedJobs: action.payload };
+    case 'TOGGLE_RESULTS':
+      return { ...state, showResults: action.payload };
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import Radio from './inputs/Radio';
 import { FiltersDispatch } from './SidebarStore';
 
 function FiltersGroupInitial(props) {
-  const { filterName } = props;
+  const { filterName, displayName } = props;
   const filterDispatch = useContext(FiltersDispatch);
   const globalState = useContext(GlobalState);
   const { allJobs } = globalState.store;
@@ -28,7 +28,7 @@ function FiltersGroupInitial(props) {
     <>
       <div className="wmca-form wdgt">
         <label htmlFor="radio" className="wmca-form-label filter-title">
-          {filterName}
+          {displayName}
         </label>
         {filters &&
           filters.map((filter, i) => {

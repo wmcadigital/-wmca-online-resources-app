@@ -17,7 +17,7 @@ function Results() {
 
   return (
     <div>
-      {opportunitiesToDisplay && <ResultsHeader selectedToRender={opportunitiesToDisplay.length} />}
+      <ResultsHeader />
       {opportunitiesToDisplay &&
         opportunitiesToDisplay.length > 0 &&
         opportunitiesToDisplay.map(job => {
@@ -34,6 +34,7 @@ function Results() {
         })}
     </div>
   );
+  // );
 }
 
 export default Results;

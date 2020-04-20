@@ -45,7 +45,7 @@ function App() {
                 <Sidebar />
               </div>
               <div className="pure-u-1 pure-u-md-5-8" id="stories">
-                <Results />
+                {storeContex.store.showResults && <Results />}
               </div>
             </div>
           </div>

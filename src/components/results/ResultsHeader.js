@@ -1,14 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable no-nested-ternary */
+import React, { useContext, useState, useEffect } from 'react';
+import { GlobalState } from '../../store';
 
-function ResultsHeader(props) {
-  const { selectedToRender } = props;
+function ResultsHeader() {
+  const jobs = useContext(GlobalState);
+  const { secondFilterJobs } = jobs.store;
+  const [title, setTitle] = useState();
+
   const results =
-    selectedToRender && selectedToRender > 1
-      ? `${selectedToRender} results`
-      : `${selectedToRender} result`;
+    secondFilterJobs !== null
+      ? secondFilterJobs && secondFilterJobs.length > 1
+        ? `${secondFilterJobs.length} results`
+        : `${secondFilterJobs.length} result`
+      : '';
 
-  const title = selectedToRender > 0 ? results : `No Results for => show selected tags`;
+  useEffect(() => {
+    if (secondFilterJobs !== null) {
+      setTitle(results);
+    } else {
+      setTitle(`No Results`);
+    }
+  }, [secondFilterJobs, results]);
 
   return (
     <div>
@@ -16,13 +28,5 @@ function ResultsHeader(props) {
     </div>
   );
 }
-
-ResultsHeader.propTypes = {
-  selectedToRender: PropTypes.number
-};
-
-ResultsHeader.defaultProps = {
-  selectedToRender: null
-};
 
 export default ResultsHeader;

@@ -6,9 +6,10 @@ import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarS
 function SidebarFilters() {
   const sidebarFilters = [
     { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
-    { name: 'Age', displayName: 'Age', selector: 'radio' },
+    { name: 'Age', displayName: 'Age range', selector: 'radio' },
     { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
   ];
+  const buttonForceMargin = { marginBottom: '20px', marginTop: '30px' };
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
   const { selectedJobs } = jobs.store;
@@ -50,6 +51,10 @@ function SidebarFilters() {
       type: 'UPDATE_ON_SECOND_FILTER',
       payload: []
     });
+    dispatcher.dispatch({
+      type: 'TOGGLE_RESULTS',
+      payload: false
+    });
   };
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
@@ -58,10 +63,16 @@ function SidebarFilters() {
           <div className="container-wide bg-white">
             <div className="pure-g justify-between">
               <div className="pure-u-1">
-                <h2>Filter</h2>
-                <button type="submit" className="btn-primary solid" onClick={() => onCancelClick()}>
-                  <span>Cancel</span>
+                <button
+                  style={buttonForceMargin}
+                  type="submit"
+                  className="btn-primary prev m-b-lg"
+                  onClick={() => onCancelClick()}
+                >
+                  <span>Start again</span>
                 </button>
+                <h2>Refine</h2>
+
                 {sidebarFilters.map(filter => {
                   return (
                     <FiltersGroup

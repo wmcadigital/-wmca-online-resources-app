@@ -42,7 +42,7 @@ function FiltersGroup(props) {
 
   return (
     <div className="wmca-form wdgt">
-      <label className="wmca-form-label filter-title">{`${displayName}:  ${name}`}</label>
+      <label className="wmca-form-label filter-title">{`${displayName}`}</label>
       {filters && name === 'Category' ? (
         <Dropdown setSelectedFilters={setSelectedFilters} selectValue={filters} parent={name} />
       ) : (

@@ -4,7 +4,10 @@ import { GlobalState, GlobalDispatch } from '../../store';
 import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarStore';
 
 function SidebarFiltersInitial() {
-  const sidebarFilters = ['Opportunity', 'Eligibility'];
+  const sidebarFilters = [
+    { name: 'Opportunity', displayName: 'I am looking for *' },
+    { name: 'Eligibility', displayName: 'Eligibility' }
+  ];
   const jobs = useContext(GlobalState);
   const dispatcher = useContext(GlobalDispatch);
   const { allJobs } = jobs.store;
@@ -31,6 +34,10 @@ function SidebarFiltersInitial() {
       type: 'SET_INITIAL_FILTERED_JOBS',
       payload: initial
     });
+    dispatcher.dispatch({
+      type: 'TOGGLE_RESULTS',
+      payload: true
+    });
   };
 
   useEffect(() => {
@@ -48,7 +55,13 @@ function SidebarFiltersInitial() {
               <div className="pure-u-1">
                 <h2>Find an opportunity</h2>
                 {sidebarFilters.map(filter => {
-                  return <FiltersGroup key={filter} filterName={filter} />;
+                  return (
+                    <FiltersGroup
+                      key={filter.name}
+                      filterName={filter.name}
+                      displayName={filter.displayName}
+                    />
+                  );
                 })}
                 <button
                   type="submit"

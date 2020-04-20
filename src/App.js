@@ -30,7 +30,6 @@ function App() {
   };
 
   useEffect(() => {
-    document.body.classList = 'bg-white app-blog';
     fetchData();
   }, []);
 

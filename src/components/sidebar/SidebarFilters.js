@@ -2,6 +2,8 @@ import React, { useReducer, useMemo, useEffect, useContext } from 'react';
 import FiltersGroup from './FiltersGroup';
 import { GlobalDispatch, GlobalState } from '../../store';
 import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarStore';
+import ClearAndBack from './ClearAndBack';
+import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
 
 function SidebarFilters() {
   const sidebarFilters = [
@@ -9,7 +11,7 @@ function SidebarFilters() {
     { name: 'Age', displayName: 'Age range', selector: 'radio' },
     { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
   ];
-  const buttonForceMargin = { marginBottom: '20px', marginTop: '30px' };
+
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
   const { selectedJobs } = jobs.store;
@@ -59,7 +61,7 @@ function SidebarFilters() {
   const onClearClick = () => {
     dispatchContexSidebar.dispatch({
       type: 'RESET'
-    }) 
+    });
     dispatcher.dispatch({
       type: 'UPDATE_ON_SECOND_FILTER',
       payload: selectedJobs
@@ -72,16 +74,8 @@ function SidebarFilters() {
           <div className="container-wide bg-white">
             <div className="pure-g justify-between">
               <div className="pure-u-1">
-                <button
-                  style={buttonForceMargin}
-                  type="submit"
-                  className="btn-primary prev"
-                  onClick={() => onCancelClick()}
-                >
-                  <span>Start again</span>
-                </button>
+                <ClearAndBack onCancelClick={onCancelClick} />
                 <h2>Refine</h2>
-
                 {sidebarFilters.map(filter => {
                   return (
                     <FiltersGroup
@@ -92,15 +86,7 @@ function SidebarFilters() {
                     />
                   );
                 })}
-
-                <button
-                  style={buttonForceMargin}
-                  type="submit"
-                  className="btn-primary prev"
-                  onClick={() => onClearClick()}
-                >
-                  <span>Clear filters</span>
-                </button>
+                <ClearAllSecondaryFilters onClearClick={onClearClick} />
               </div>
             </div>
           </div>

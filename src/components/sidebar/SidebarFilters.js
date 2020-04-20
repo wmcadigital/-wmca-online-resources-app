@@ -70,27 +70,29 @@ function SidebarFilters() {
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
       <FiltersState.Provider value={storeContexSidebar}>
-        <div>
-          <div className="container-wide bg-white">
-            <div className="pure-g justify-between">
-              <div className="pure-u-1">
-                <ClearAndBack onCancelClick={onCancelClick} />
-                <h2>Refine</h2>
-                {sidebarFilters.map(filter => {
-                  return (
-                    <FiltersGroup
-                      key={filter.name}
-                      name={filter.name}
-                      displayName={filter.displayName}
-                      selector={filter.selector}
-                    />
-                  );
-                })}
-                <ClearAllSecondaryFilters onClearClick={onClearClick} />
+        <>
+          <div>
+            <div className="container-wide bg-white">
+              <div className="pure-g justify-between">
+                <div className="pure-u-1">
+                  <ClearAndBack onCancelClick={onCancelClick} />
+                  <h2>Refine</h2>
+                  {sidebarFilters.map(filter => {
+                    return (
+                      <FiltersGroup
+                        key={filter.name}
+                        name={filter.name}
+                        displayName={filter.displayName}
+                        selector={filter.selector}
+                      />
+                    );
+                  })}
+                  <ClearAllSecondaryFilters onClearClick={onClearClick} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       </FiltersState.Provider>
     </FiltersDispatch.Provider>
   );

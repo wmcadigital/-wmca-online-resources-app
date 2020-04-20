@@ -56,6 +56,15 @@ function SidebarFilters() {
       payload: false
     });
   };
+  const onClearClick = () => {
+    dispatchContexSidebar.dispatch({
+      type: 'RESET'
+    }) 
+    dispatcher.dispatch({
+      type: 'UPDATE_ON_SECOND_FILTER',
+      payload: selectedJobs
+    });
+  };
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
       <FiltersState.Provider value={storeContexSidebar}>
@@ -66,7 +75,7 @@ function SidebarFilters() {
                 <button
                   style={buttonForceMargin}
                   type="submit"
-                  className="btn-primary prev m-b-lg"
+                  className="btn-primary prev"
                   onClick={() => onCancelClick()}
                 >
                   <span>Start again</span>
@@ -83,6 +92,15 @@ function SidebarFilters() {
                     />
                   );
                 })}
+
+                <button
+                  style={buttonForceMargin}
+                  type="submit"
+                  className="btn-primary prev"
+                  onClick={() => onClearClick()}
+                >
+                  <span>Clear filters</span>
+                </button>
               </div>
             </div>
           </div>

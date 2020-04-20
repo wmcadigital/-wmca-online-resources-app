@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { FiltersState } from '../SidebarStore';
 
 function DropDown(props) {
   const DEFAULT = 'select';
   const { selectValue, parent, setSelectedFilters } = props;
-  const [selectedValue, setSelectedValue] = useState('select');
+  const filterState = useContext(FiltersState);
 
   function onSlectedChange(e) {
-    setSelectedValue(e.target.value, parent);
     setSelectedFilters(e.target.value, parent);
   }
 
@@ -15,7 +15,7 @@ function DropDown(props) {
     <div className="pure-u-1">
       <div className="wmca-form wdgt">
         <select
-          value={selectedValue}
+          value={filterState.store[parent]}
           id={parent}
           onChange={e => {
             onSlectedChange(e);

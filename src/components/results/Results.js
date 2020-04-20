@@ -23,7 +23,7 @@ function Results() {
         opportunitiesToDisplay.map(job => {
           return (
             <ResultItem
-              key={`${job.Link}_${job.Url}`}
+              key={`${job.Link}_${job.Url}_${job.Id}`}
               name={job.Name}
               provider={job.Provider}
               url={job.Url}

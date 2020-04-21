@@ -37,9 +37,9 @@ function FiltersGroup(props) {
   };
 
   React.useEffect(() => {
-    setAllFilters(getFiltersGroup(selectedJobs, name));
+    const filtersToSort = getFiltersGroup(selectedJobs, name);
+    setAllFilters(filtersToSort.sort());
   }, [selectedJobs, name]);
-
   return (
     <div className="wmca-form wdgt">
       <label name={name} id={name} className="wmca-form-label filter-title">

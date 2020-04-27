@@ -7,9 +7,10 @@ const ClearAndBack = ({ onCancelClick }) => {
     <button
       style={buttonForceMargin}
       type="submit"
-      className="btn-primary prev"
+      className="btn-main btn-main-warning btn-main-warning--solid"
       onClick={() => onCancelClick()}
     >
+      <i className="far fa-angle-left left" />
       <span>Start again</span>
     </button>
   );

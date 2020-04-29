@@ -17,7 +17,7 @@ function SidebarFiltersInitial() {
   const storeContex = useMemo(() => ({ store }), [store]);
   const [canSubmit, toggleCanSubbmit] = useState(false);
   const onClick = () => {
-    if(!canSubmit) return;
+    if (!canSubmit) return;
     let initial = allJobs;
     if (storeContex.store.Opportunity) {
       initial = initial.filter(elem => {

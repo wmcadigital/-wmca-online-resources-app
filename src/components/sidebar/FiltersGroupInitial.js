@@ -52,9 +52,11 @@ function FiltersGroupInitial(props) {
 export default React.memo(FiltersGroupInitial);
 
 FiltersGroupInitial.propTypes = {
-  filterName: PropTypes.string
+  filterName: PropTypes.string,
+  displayName: PropTypes.string
 };
 
 FiltersGroupInitial.defaultProps = {
-  filterName: ''
+  filterName: '',
+  displayName: ''
 };

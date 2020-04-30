@@ -1,9 +1,10 @@
-import React, { useReducer, useMemo, useEffect, useContext } from 'react';
+import React, { useReducer, useMemo, useEffect, useContext, useState } from 'react';
 import FiltersGroup from './FiltersGroup';
 import { GlobalDispatch, GlobalState } from '../../store';
 import { initialState, reducer, FiltersState, FiltersDispatch } from './SidebarStore';
 import ClearAndBack from './ClearAndBack';
 import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
+import Refine from './MobileRefine';
 
 function SidebarFilters() {
   const sidebarFilters = [
@@ -14,6 +15,10 @@ function SidebarFilters() {
 
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
+
+  const [refined, setRefined] = useState();
+  const [showClassname, setClassname] = useState('show-desktop');
+
   const { selectedJobs } = jobs.store;
 
   const [store, dispatch] = useReducer(reducer, initialState);
@@ -67,11 +72,26 @@ function SidebarFilters() {
       payload: selectedJobs
     });
   };
+  const onRefineClick = () => {
+    setRefined(!refined);
+
+    // setRefine('show-desktop')
+  };
+  useEffect(() => {
+    if (!refined) {
+      setClassname('show-desktop');
+    } else {
+      setClassname('');
+    }
+  }, [refined]);
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
       <FiltersState.Provider value={storeContexSidebar}>
         <>
-          <div>
+          <div className="hide-desktop">
+            <Refine onRefineClick={onRefineClick} refined={refined} />
+          </div>
+          <div className={showClassname}>
             <div className="container-wide bg-white">
               <div className="pure-g justify-between">
                 <div className="pure-u-1">

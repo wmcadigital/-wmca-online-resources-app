@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 function ResultItem(props) {
   const { name, provider, url, link, summary } = props;
+  const externalLink =
+    link.indexOf('http://') === 0 || link.indexOf('https://') === 0 ? link : `//${link}`;
+
   return (
     <>
       <article className="wdgt">
@@ -10,7 +13,7 @@ function ResultItem(props) {
         <ul>
           <li>
             <span className="highlight">Provider </span>
-            <a className="btn-secondary" href={link}>
+            <a className="btn-secondary" href={externalLink}>
               {provider}
             </a>
             <i className="icon-link-external icon-large" />

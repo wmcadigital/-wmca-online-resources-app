@@ -10,8 +10,7 @@ const MobileRefine = ({ onRefineClick, refined }) => {
       className="btn-main btn-main-primary btn-main-primary--solid mar-20"
       onClick={() => onRefineClick()}
     >
-      {refined ? <span>Close </span> : <span>Filter data</span>}
-
+      {refined ? <span>Close </span> : <span>Refine</span>}
       <i className="fal fa-filter" />
     </button>
   );

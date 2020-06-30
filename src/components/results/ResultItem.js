@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 function ResultItem(props) {
   const { name, provider, url, link, summary } = props;
+
   const externalLink =
     link.indexOf('http://') === 0 || link.indexOf('https://') === 0 ? link : `//${link}`;
 

@@ -16,9 +16,12 @@ function SidebarFiltersInitial() {
   const dispatchContex = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContex = useMemo(() => ({ store }), [store]);
   const [canSubmit, toggleCanSubbmit] = useState(false);
+
+  // on search click - set all relevant jobs with selected filteres
   const onClick = () => {
     if (!canSubmit) return;
     let initial = allJobs;
+    // filter down to relevant dataset - "AND" not "OR"
     if (storeContex.store.Opportunity) {
       initial = initial.filter(elem => {
         return elem.filters.indexOf(storeContex.store.Opportunity) > 0;
@@ -30,7 +33,7 @@ function SidebarFiltersInitial() {
         return elem.filters.indexOf(storeContex.store.Eligibility) > 0;
       });
     }
-
+    // send filtered form
     dispatcher.dispatch({
       type: 'SET_INITIAL_FILTERED_JOBS',
       payload: initial
@@ -40,7 +43,7 @@ function SidebarFiltersInitial() {
       payload: true
     });
   };
-
+  // toggle button disable
   useEffect(() => {
     if (storeContex.store.Eligibility !== '' && storeContex.store.Opportunity !== '') {
       toggleCanSubbmit(true);
@@ -55,6 +58,7 @@ function SidebarFiltersInitial() {
             <div className="pure-g justify-between">
               <div className="pure-u-1">
                 <h2>Find an opportunity</h2>
+                {/* create filter groups - settings in line 7 */}
                 {sidebarFilters.map(filter => {
                   return (
                     <FiltersGroup

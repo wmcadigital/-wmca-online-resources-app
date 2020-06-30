@@ -7,12 +7,13 @@ import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
 import Refine from './MobileRefine';
 
 function SidebarFilters() {
+  // settings for creating filter groups
   const sidebarFilters = [
     { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
     { name: 'Age', displayName: 'Age range', selector: 'radio' },
     { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
   ];
-
+  // global context use here to go back and start again
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
 
@@ -20,12 +21,13 @@ function SidebarFilters() {
   const [showClassname, setClassname] = useState('show-desktop');
 
   const { selectedJobs } = jobs.store;
-
+  // local context - used for updating secondary filters
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);
 
   useEffect(() => {
+    // filter drilling - change into hook for search
     let initial = selectedJobs;
     if (storeContexSidebar.store.Category) {
       initial = initial.filter(elem => {
@@ -50,6 +52,7 @@ function SidebarFilters() {
   }, [storeContexSidebar, selectedJobs, dispatcher]);
 
   const onCancelClick = () => {
+    // could be refactored as one call
     dispatcher.dispatch({
       type: 'SET_INITIAL_FILTERED_JOBS',
       payload: []
@@ -72,10 +75,9 @@ function SidebarFilters() {
       payload: selectedJobs
     });
   };
+  // set up for toggling filter visibility on deevices
   const onRefineClick = () => {
     setRefined(!refined);
-
-    // setRefine('show-desktop')
   };
   useEffect(() => {
     if (!refined) {

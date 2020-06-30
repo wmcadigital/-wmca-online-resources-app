@@ -14,6 +14,7 @@ function FiltersGroup(props) {
   const { selectedJobs } = globalState.store;
   const [filters, setAllFilters] = useState([]);
   const setSelectedFilters = (value, parent) => {
+    // i hear you ask why - this is to reset the secondary filters when dropdown changes - radiobuttons clear values
     if (parent === 'Category') {
       filterDispatch.dispatch({
         type: 'RESET'
@@ -36,6 +37,7 @@ function FiltersGroup(props) {
     }
   };
 
+  // get all filters for the group
   React.useEffect(() => {
     const filtersToSort = getFiltersGroup(selectedJobs, name);
     setAllFilters(filtersToSort.sort());
@@ -45,6 +47,7 @@ function FiltersGroup(props) {
       <label name={name} id={name} className="wmca-form-label filter-title">
         {`${displayName}`}
       </label>
+      {/* two different types of filters - but dropdown is the one who rule them all */}
       {filters && name === 'Category' ? (
         <Dropdown setSelectedFilters={setSelectedFilters} selectValue={filters} parent={name} />
       ) : (
@@ -71,12 +74,10 @@ export default FiltersGroup;
 
 FiltersGroup.propTypes = {
   name: PropTypes.string,
-  displayName: PropTypes.string,
-  selector: PropTypes.string
+  displayName: PropTypes.string
 };
 
 FiltersGroup.defaultProps = {
   name: '',
-  displayName: '',
-  selector: ''
+  displayName: ''
 };

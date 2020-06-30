@@ -20,6 +20,7 @@ function App() {
     return fetch(FETCHURL)
       .then(res => res.json())
       .then(jsn => {
+        // set all selectors / filters for each dataset
         setAllFiltersForElement(jsn).then(res => {
           dispatch({
             type: FETCH_JOBS,
@@ -44,6 +45,7 @@ function App() {
                 <Sidebar />
               </div>
               <div className="pure-u-1 pure-u-md-5-8" id="stories">
+                {/* do not display results for initial filters */}
                 {storeContex.store.showResults && <Results />}
               </div>
             </div>

@@ -7,10 +7,14 @@ import { FiltersDispatch } from './SidebarStore';
 
 function FiltersGroupInitial(props) {
   const { filterName, displayName } = props;
+  // set context
   const filterDispatch = useContext(FiltersDispatch);
   const globalState = useContext(GlobalState);
+  // get all jobs
   const { allJobs } = globalState.store;
   const [filters, setAllFilters] = useState();
+
+  // having data passed on radio change
   const setSelectedFilters = (value, parent) => {
     filterDispatch.dispatch({
       type: 'SET_INITIAL_FILTERS',
@@ -20,6 +24,7 @@ function FiltersGroupInitial(props) {
       }
     });
   };
+  // get all selectable filters from the filter groupo: allJobs, filterName
   React.useEffect(() => {
     setAllFilters(getFiltersGroup(allJobs, filterName));
   }, [allJobs, filterName]);

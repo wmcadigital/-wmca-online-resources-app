@@ -7,7 +7,7 @@ const Sidebar = () => {
   const globalState = useContext(GlobalState);
   const { selectedJobs } = globalState.store;
   const hasFilters = selectedJobs.length > 0;
-
+  // there a two sets of filters selectedJobs - is for jobs preselected on the first view
   return <div>{hasFilters ? <SideBarFilters /> : <SideBarFiltersInitial />}</div>;
 };
 

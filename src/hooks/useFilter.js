@@ -14,7 +14,8 @@ const useFilter = (selectedJobs, sidebarFilters, storeContexSidebar, setSelected
         });
       }
     }
-    setResults(filteredResults);
+    const toSend = filteredResults.length === 0 ? null : filteredResults;
+    setResults(toSend);
   }, [storeContexSidebar]);
 
   return {

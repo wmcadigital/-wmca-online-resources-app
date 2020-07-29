@@ -15,12 +15,8 @@ function SidebarFilters() {
 
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
-
-  const [refined, setRefined] = useState();
-  const [showClassname, setClassname] = useState('show-desktop');
-
   const { selectedJobs } = jobs.store;
-
+  const [refined, setRefined] = useState();
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);
@@ -49,28 +45,9 @@ function SidebarFilters() {
     });
   }, [storeContexSidebar, selectedJobs, dispatcher]);
 
-  
-  const onClearClick = () => {
-    dispatchContexSidebar.dispatch({
-      type: 'RESET'
-    });
-    dispatcher.dispatch({
-      type: 'UPDATE_ON_SECOND_FILTER',
-      payload: selectedJobs
-    });
-  };
   const onRefineClick = () => {
     setRefined(!refined);
-
-    // setRefine('show-desktop')
   };
-  useEffect(() => {
-    if (!refined) {
-      setClassname('show-desktop');
-    } else {
-      setClassname('');
-    }
-  }, [refined]);
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
       <FiltersState.Provider value={storeContexSidebar}>
@@ -78,7 +55,7 @@ function SidebarFilters() {
           <div className="hide-desktop">
             <Refine onRefineClick={onRefineClick} refined={refined} />
           </div>
-          <div className={showClassname}>
+          <div className={refined ? '' : 'show-desktop' }>
             <div className="container-wide bg-white">
               <div className="pure-g justify-between">
                 <div className="pure-u-1">
@@ -94,7 +71,7 @@ function SidebarFilters() {
                       />
                     );
                   })}
-                  <ClearAllSecondaryFilters onClearClick={onClearClick} />
+                  <ClearAllSecondaryFilters />
                 </div>
               </div>
             </div>

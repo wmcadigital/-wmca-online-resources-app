@@ -49,20 +49,7 @@ function SidebarFilters() {
     });
   }, [storeContexSidebar, selectedJobs, dispatcher]);
 
-  const onCancelClick = () => {
-    dispatcher.dispatch({
-      type: 'SET_INITIAL_FILTERED_JOBS',
-      payload: []
-    });
-    dispatcher.dispatch({
-      type: 'UPDATE_ON_SECOND_FILTER',
-      payload: []
-    });
-    dispatcher.dispatch({
-      type: 'TOGGLE_RESULTS',
-      payload: false
-    });
-  };
+  
   const onClearClick = () => {
     dispatchContexSidebar.dispatch({
       type: 'RESET'
@@ -95,7 +82,7 @@ function SidebarFilters() {
             <div className="container-wide bg-white">
               <div className="pure-g justify-between">
                 <div className="pure-u-1">
-                  <ClearAndBack onCancelClick={onCancelClick} />
+                  <ClearAndBack />
                   <h2>Refine</h2>
                   {sidebarFilters.map(filter => {
                     return (

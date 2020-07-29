@@ -18,7 +18,7 @@ function SidebarFilters() {
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
   const { selectedJobs } = jobs.store;
-  const [refined, setRefined] = useState();
+  const [refined, setRefined] = useState(false);
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);

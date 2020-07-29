@@ -20,5 +20,5 @@ export default MobileRefine;
 
 MobileRefine.propTypes = {
   onRefineClick: PropTypes.instanceOf(Function).isRequired,
-  refined: PropTypes.instanceOf(Boolean).isRequired
+  refined: PropTypes.bool.isRequired
 };

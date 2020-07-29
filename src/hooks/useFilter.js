@@ -1,7 +1,7 @@
 import React from 'react';
 
 const useFilter = (selectedJobs, sidebarFilters, storeContexSidebar, setSelectedOpportunities) => {
-  const [resultsFilter, setResults] = React.useState([])
+  const [resultsFilter, setResultsFilter] = React.useState([])
   let filteredResults = selectedJobs;
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ const useFilter = (selectedJobs, sidebarFilters, storeContexSidebar, setSelected
       }
     }
     const toSend = filteredResults.length === 0 ? null : filteredResults;
-    setResults(toSend);
+    setResultsFilter(toSend);
   }, [storeContexSidebar]);
 
   return {

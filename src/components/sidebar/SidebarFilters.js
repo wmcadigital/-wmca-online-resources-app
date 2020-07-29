@@ -6,6 +6,8 @@ import ClearAndBack from './ClearAndBack';
 import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
 import Refine from './MobileRefine';
 
+import useFilter from '../../hooks/useFilter';
+
 function SidebarFilters() {
   const sidebarFilters = [
     { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
@@ -21,29 +23,14 @@ function SidebarFilters() {
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);
 
+  const { resultsFilter } = useFilter(selectedJobs, sidebarFilters, storeContexSidebar);
+
   useEffect(() => {
-    let initial = selectedJobs;
-    if (storeContexSidebar.store.Category) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.Category) > 0;
-      });
-    }
-    if (storeContexSidebar.store.Age) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.Age) > 0;
-      });
-    }
-    if (storeContexSidebar.store.SkillLevel) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.SkillLevel) > 0;
-      });
-    }
-    const toSend = initial.length === 0 ? null : initial;
     dispatcher.dispatch({
       type: 'UPDATE_ON_SECOND_FILTER',
-      payload: toSend
+      payload: resultsFilter
     });
-  }, [storeContexSidebar, selectedJobs, dispatcher]);
+  }, [dispatcher, resultsFilter]);
 
   const onRefineClick = () => {
     setRefined(!refined);
@@ -55,7 +42,7 @@ function SidebarFilters() {
           <div className="hide-desktop">
             <Refine onRefineClick={onRefineClick} refined={refined} />
           </div>
-          <div className={refined ? '' : 'show-desktop' }>
+          <div className={refined ? '' : 'show-desktop'}>
             <div className="container-wide bg-white">
               <div className="pure-g justify-between">
                 <div className="pure-u-1">

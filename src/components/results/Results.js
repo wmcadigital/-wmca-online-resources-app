@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { GlobalState } from '../../store';
 import ResultItem from './ResultItem';
 import ResultsHeader from './ResultsHeader';
+import Pagination from '../pagination/Pagination';
 
 function Results() {
   const jobs = useContext(GlobalState);
@@ -24,6 +25,7 @@ function Results() {
   return (
     <div>
       <ResultsHeader />
+      <Pagination />
       {opportunitiesToDisplay &&
         opportunitiesToDisplay.length > 0 &&
         opportunitiesToDisplay.map(job => {

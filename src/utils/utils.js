@@ -45,6 +45,19 @@ const setAllFiltersForElement = async data => {
   return data;
 };
 
-// export default getAllFilters;
+const splitArray = async (arr, chunkSize = 10) => {
+  let index = 0;
+  const arrayLength = arr.length;
+  const tempArray = [];
+  let myChunk;
 
-export { getFiltersGroup, getAllFilters, setAllFiltersForElement };
+  for (index = 0; index < arrayLength; index += chunkSize) {
+    myChunk = arr.slice(index, index + chunkSize);
+    // Do something if you want with the group
+    tempArray.push(myChunk);
+  }
+
+  return tempArray;
+};
+
+export { getFiltersGroup, getAllFilters, setAllFiltersForElement, splitArray };

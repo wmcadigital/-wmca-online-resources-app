@@ -5,15 +5,21 @@ import ResultsHeader from './ResultsHeader';
 
 function Results() {
   const jobs = useContext(GlobalState);
-  const { selectedJobs, secondFilterJobs } = jobs.store;
+  const { selectedJobs, secondFilterJobs, currentPage } = jobs.store;
   const [opportunitiesToDisplay, setOpportunitiesToDisplay] = useState();
   useEffect(() => {
     if ((secondFilterJobs && secondFilterJobs.length > 0) || secondFilterJobs === null) {
-      setOpportunitiesToDisplay(secondFilterJobs);
+      setOpportunitiesToDisplay(secondFilterJobs[currentPage]);
     } else {
-      setOpportunitiesToDisplay(selectedJobs);
+      setOpportunitiesToDisplay(selectedJobs[currentPage]);
     }
-  }, [setOpportunitiesToDisplay, opportunitiesToDisplay, secondFilterJobs, selectedJobs]);
+  }, [
+    setOpportunitiesToDisplay,
+    opportunitiesToDisplay,
+    secondFilterJobs,
+    selectedJobs,
+    currentPage
+  ]);
 
   return (
     <div>

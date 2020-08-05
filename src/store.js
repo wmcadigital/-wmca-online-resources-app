@@ -29,4 +29,4 @@ const reducer = (state, action) => {
 const GlobalState = React.createContext(null);
 const GlobalDispatch = React.createContext(null);
 
-export { initialState, reducer, GlobalState, GlobalDispatch };
+export { reducer, initialState, GlobalState, GlobalDispatch };

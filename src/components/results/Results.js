@@ -25,7 +25,6 @@ function Results() {
   return (
     <div>
       <ResultsHeader />
-      <Pagination />
       {opportunitiesToDisplay &&
         opportunitiesToDisplay.length > 0 &&
         opportunitiesToDisplay.map(job => {
@@ -40,6 +39,7 @@ function Results() {
             />
           );
         })}
+      <Pagination />
     </div>
   );
   // );

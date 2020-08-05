@@ -4,7 +4,8 @@ import { GlobalState } from '../../store';
 
 function ResultsHeader() {
   const jobs = useContext(GlobalState);
-  const { secondFilterJobs } = jobs.store;
+  let { secondFilterJobs } = jobs.store;
+  secondFilterJobs = secondFilterJobs.reduce((acc, val) => acc.concat(val), []);
   const [title, setTitle] = useState('No Results');
   // todo - make use of isLoading flag - after creating it
   const results =

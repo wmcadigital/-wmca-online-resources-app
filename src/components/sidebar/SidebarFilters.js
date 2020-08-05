@@ -6,14 +6,10 @@ import ClearAndBack from './ClearAndBack';
 import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
 import Refine from './MobileRefine';
 
+import sidebarFilters from '../../sidebarFilters';
 import useFilter from '../../hooks/useFilter';
 
 function SidebarFilters() {
-  const sidebarFilters = [
-    { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
-    { name: 'Age', displayName: 'Age range', selector: 'radio' },
-    { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
-  ];
 
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
@@ -23,7 +19,7 @@ function SidebarFilters() {
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);
 
-  const { resultsFilter } = useFilter(selectedJobs, sidebarFilters, storeContexSidebar);
+  const { resultsFilter } = useFilter(selectedJobs, storeContexSidebar);
 
   useEffect(() => {
     dispatcher.dispatch({

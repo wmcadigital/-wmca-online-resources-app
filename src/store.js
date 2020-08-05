@@ -1,5 +1,5 @@
 import React from 'react';
-import { FETCH_JOBS, UPDATE_SELECTED_FILTERS, UPDATE_ON_SECOND_FILTER } from './actionTypes';
+import { FETCH_JOBS, UPDATE_ON_SECOND_FILTER } from './actionTypes';
 
 const initialState = {
   allJobs: [],

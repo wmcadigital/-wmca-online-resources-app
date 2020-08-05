@@ -2,8 +2,9 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { splitArray } from '../utils/utils';
+import sidebarFilters from '../sidebarFilters';
 
-const useFilter = (selectedJobs, sidebarFilters, storeContexSidebar) => {
+const useFilter = (selectedJobs, storeContexSidebar) => {
   const [resultsFilter, setResultsFilter] = React.useState(selectedJobs);
   let filteredResults = selectedJobs;
 

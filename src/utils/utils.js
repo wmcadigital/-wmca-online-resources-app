@@ -45,7 +45,7 @@ const setAllFiltersForElement = async data => {
   return data;
 };
 
-const splitArray = async (arr, chunkSize = 20) => {
+const splitArray = async (arr, chunkSize = 25) => {
   let index = 0;
   const arrayLength = arr.length;
   const tempArray = [];

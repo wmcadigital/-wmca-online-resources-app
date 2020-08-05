@@ -11,11 +11,21 @@ function Pagination() {
   const { currentPage, secondFilterJobs } = globalState.store;
   const navLength = secondFilterJobs.length;
   const navText = currentPage < navLength - 1 ? 'Next' : 'Previous';
+
+  const scrollIt = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
   const onSelected = selected => {
     dispatcher.dispatch({
       type: 'SET_CURRENT_PAGE',
       payload: selected
     });
+
+    scrollIt();
   };
   const onNext = () => {
     dispatcher.dispatch({
@@ -50,4 +60,4 @@ function Pagination() {
   )
 }
 
-export default Pagination
+export default Pagination;

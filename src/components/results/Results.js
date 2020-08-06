@@ -25,6 +25,7 @@ function Results() {
   return (
     <div>
       <ResultsHeader />
+      {secondFilterJobs.length > 1 && <Pagination />}
       {opportunitiesToDisplay &&
         opportunitiesToDisplay.length > 0 &&
         opportunitiesToDisplay.map(job => {
@@ -39,7 +40,7 @@ function Results() {
             />
           );
         })}
-      {secondFilterJobs.length > 1 && <Pagination />}
+      
     </div>
   );
   // );

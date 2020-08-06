@@ -28,18 +28,21 @@ function Pagination() {
     if (currentPage >= maxNavElements) {
       createRange(currentPage - 4, currentPage);
     } else {
-      createRange(0, 4);
+      const to = secondFilterJobs.length - 2 > maxNavElements ? 4 : secondFilterJobs.length - 1;
+      createRange(0, to);
     }
-  }, [currentPage]);
+  }, [currentPage, secondFilterJobs.length]);
 
   return (
     <div className={style.wrapper}>
-      <PaginationItem
-        isdisabled={currentPage === 0}
-        value="Previous"
-        isCurrent={false}
-        goTo={currentPage - 1}
-      />
+      {secondFilterJobs.length > maxNavElements && (
+        <PaginationItem
+          isdisabled={currentPage === 0}
+          value="Previous"
+          isCurrent={false}
+          goTo={currentPage - 1}
+        />
+      )}
       {rangeArr.map(e => (
         <PaginationItem
           isdisabled={false}
@@ -49,12 +52,14 @@ function Pagination() {
           goTo={e}
         />
       ))}
-      <PaginationItem
-        isdisabled={currentPage === paginationNavLength - 1}
-        value="Next"
-        isCurrent={false}
-        goTo={currentPage + 1}
-      />
+      {secondFilterJobs.length > maxNavElements && (
+        <PaginationItem
+          isdisabled={currentPage === paginationNavLength - 1}
+          value="Next"
+          isCurrent={false}
+          goTo={currentPage + 1}
+        />
+      )}
     </div>
   );
 }

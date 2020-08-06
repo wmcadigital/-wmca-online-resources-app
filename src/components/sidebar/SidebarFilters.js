@@ -26,6 +26,10 @@ function SidebarFilters() {
       type: 'UPDATE_ON_SECOND_FILTER',
       payload: resultsFilter
     });
+    dispatcher.dispatch({
+      type: 'SET_CURRENT_PAGE',
+      payload: 0
+    });
   }, [dispatcher, resultsFilter]);
 
   const onRefineClick = () => {

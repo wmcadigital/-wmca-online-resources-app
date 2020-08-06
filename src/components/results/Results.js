@@ -39,7 +39,7 @@ function Results() {
             />
           );
         })}
-      <Pagination />
+      {secondFilterJobs.length > 1 && <Pagination />}
     </div>
   );
   // );

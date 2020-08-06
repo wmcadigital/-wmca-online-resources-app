@@ -1,19 +1,5 @@
 .wrapper {
-  ul {
     display: flex;
     margin: 0 0 30px 0;
     padding: 0;
-    li {
-      list-style: none;
-      padding: 0;
-      cursor: pointer;
-      padding: 15px;
-      &.current {
-        font-weight: 700;
-      }
-      &:nth-child(1) {
-        padding-left: 0;
-      }
-    }
-  }
 }

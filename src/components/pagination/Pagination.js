@@ -1,63 +1,62 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useContext } from 'react';
-import { GlobalState, GlobalDispatch } from '../../store';
+import React, { useContext, useState, useEffect } from 'react';
+import { GlobalState } from '../../store';
+
+import PaginationItem from './PaginationItem';
 
 import style from './pagination.module.scss';
 
 function Pagination() {
+  const maxNavElements = 5;
   const globalState = useContext(GlobalState);
-  const dispatcher = useContext(GlobalDispatch);
   const { currentPage, secondFilterJobs } = globalState.store;
-  const navLength = secondFilterJobs.length;
-  const navText = currentPage < navLength - 1 ? 'Next' : 'Previous';
+  const [rangeArr, setRangeArr] = useState([]);
+  const paginationNavLength = secondFilterJobs.length;
 
-  const scrollIt = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+  const createRange = (from, to, step = 1) => {
+    let i = from;
+    const range = [];
+    while (i <= to) {
+      range.push(i);
+      i += step;
+    }
+    setRangeArr([...range]);
   };
-  const onSelected = selected => {
-    dispatcher.dispatch({
-      type: 'SET_CURRENT_PAGE',
-      payload: selected
-    });
 
-    scrollIt();
-  };
-  const onNext = () => {
-    dispatcher.dispatch({
-      type: 'SET_CURRENT_PAGE',
-      payload: currentPage <= navLength - 2 ? currentPage + 1 : currentPage - 1
-    });
-  };
+  useEffect(() => {
+    if (currentPage >= maxNavElements) {
+      createRange(currentPage - 4, currentPage);
+    } else {
+      createRange(0, 4);
+    }
+  }, [currentPage]);
+
   return (
     <div className={style.wrapper}>
-      <ul>
-        {/* eslint-disable-next-line react/no-array-index-key */}
-        {navLength > 0 &&
-          [...Array(navLength)].map((e, i) => (
-            <li
-              onClick={() => {
-                onSelected(i);
-              }}
-              onKeyDown={onSelected}
-              key={i + 1}
-              className={currentPage === i ? style.current : ''}
-            >
-              {i + 1}
-            </li>
-          ))}
-        {navLength > 0 && (
-          <li onClick={() => onNext()} onKeyDown={onNext} key="next">
-            {navText}
-          </li>
-        )}
-      </ul>
+      <PaginationItem
+        isdisabled={currentPage === 0}
+        value="Previous"
+        isCurrent={false}
+        goTo={currentPage - 1}
+      />
+      {rangeArr.map(e => (
+        <PaginationItem
+          isdisabled={false}
+          key={e}
+          value={(e + 1).toString()}
+          isCurrent={currentPage === e}
+          goTo={e}
+        />
+      ))}
+      <PaginationItem
+        isdisabled={currentPage === paginationNavLength - 1}
+        value="Next"
+        isCurrent={false}
+        goTo={currentPage + 1}
+      />
     </div>
-  )
+  );
 }
 
 export default Pagination;

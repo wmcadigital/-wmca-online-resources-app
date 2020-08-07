@@ -28,10 +28,10 @@ function Pagination() {
     if (currentPage >= maxNavElements) {
       createRange(currentPage - 4, currentPage);
     } else {
-      const to = secondFilterJobs.length - 2 > maxNavElements ? 4 : secondFilterJobs.length - 1;
+      const to = paginationNavLength - 2 > maxNavElements ? 4 : paginationNavLength - 1;
       createRange(0, to);
     }
-  }, [currentPage, secondFilterJobs.length]);
+  }, [currentPage, paginationNavLength]);
 
   return (
     <div className={style.wrapper}>

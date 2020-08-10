@@ -4,18 +4,19 @@ import { GlobalState } from '../../store';
 
 function ResultsHeader() {
   const jobs = useContext(GlobalState);
-  const { secondFilterJobs } = jobs.store;
-  const [title, setTitle] = useState();
-
+  let { secondFilterJobs } = jobs.store;
+  secondFilterJobs = secondFilterJobs.reduce((acc, val) => acc.concat(val), []);
+  const [title, setTitle] = useState('No Results');
+  // todo - make use of isLoading flag - after creating it
   const results =
-    secondFilterJobs !== null
+    secondFilterJobs !== null && secondFilterJobs.length > 0
       ? secondFilterJobs && secondFilterJobs.length > 1
         ? `${secondFilterJobs.length} results`
         : `${secondFilterJobs.length} result`
       : '';
 
   useEffect(() => {
-    if (secondFilterJobs !== null) {
+    if (secondFilterJobs !== null && secondFilterJobs.length > 0) {
       setTitle(results);
     } else {
       setTitle(`No Results`);

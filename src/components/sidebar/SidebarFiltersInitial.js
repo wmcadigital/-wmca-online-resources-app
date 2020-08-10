@@ -30,7 +30,7 @@ function SidebarFiltersInitial() {
         return elem.filters.indexOf(storeContex.store.Eligibility) > 0;
       });
     }
-
+    // split array and dispatch
     dispatcher.dispatch({
       type: 'SET_INITIAL_FILTERED_JOBS',
       payload: initial

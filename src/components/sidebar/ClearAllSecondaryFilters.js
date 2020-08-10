@@ -1,7 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { FiltersDispatch } from './SidebarStore';
+import { GlobalDispatch, GlobalState } from '../../store';
 
-const ClearAllSecondaryFilters = ({ onClearClick }) => {
+const ClearAllSecondaryFilters = () => {
+  const filtersDispatch = React.useContext(FiltersDispatch);
+  const globalDispatch = React.useContext(GlobalDispatch);
+  const jobs = React.useContext(GlobalState);
+  const { selectedJobs } = jobs.store;
+  const onClearClick = () => {
+    filtersDispatch.dispatch({
+      type: 'RESET'
+    });
+    globalDispatch.dispatch({
+      type: 'UPDATE_ON_SECOND_FILTER',
+      payload: selectedJobs
+    });
+  };
   return (
     <button type="submit" className="btn-main btn-main-primary" onClick={() => onClearClick()}>
       <i className="fal fa-times left" />
@@ -12,6 +26,3 @@ const ClearAllSecondaryFilters = ({ onClearClick }) => {
 
 export default ClearAllSecondaryFilters;
 
-ClearAllSecondaryFilters.propTypes = {
-  onClearClick: PropTypes.instanceOf(Function).isRequired
-};

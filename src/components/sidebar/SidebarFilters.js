@@ -6,84 +6,35 @@ import ClearAndBack from './ClearAndBack';
 import ClearAllSecondaryFilters from './ClearAllSecondaryFilters';
 import Refine from './MobileRefine';
 
+import sidebarFilters from '../../sidebarFilters';
+import useFilter from '../../hooks/useFilter';
+
 function SidebarFilters() {
-  const sidebarFilters = [
-    { name: 'Category', displayName: 'Industry', selector: 'dropdown' },
-    { name: 'Age', displayName: 'Age range', selector: 'radio' },
-    { name: 'SkillLevel', displayName: 'Skill Level', selector: 'radio' }
-  ];
 
   const dispatcher = useContext(GlobalDispatch);
   const jobs = useContext(GlobalState);
-
-  const [refined, setRefined] = useState();
-  const [showClassname, setClassname] = useState('show-desktop');
-
   const { selectedJobs } = jobs.store;
-
+  const [refined, setRefined] = useState(false);
   const [store, dispatch] = useReducer(reducer, initialState);
   const dispatchContexSidebar = useMemo(() => ({ dispatch }), [dispatch]);
   const storeContexSidebar = useMemo(() => ({ store }), [store]);
 
-  useEffect(() => {
-    let initial = selectedJobs;
-    if (storeContexSidebar.store.Category) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.Category) > 0;
-      });
-    }
-    if (storeContexSidebar.store.Age) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.Age) > 0;
-      });
-    }
-    if (storeContexSidebar.store.SkillLevel) {
-      initial = initial.filter(elem => {
-        return elem.filters.indexOf(storeContexSidebar.store.SkillLevel) > 0;
-      });
-    }
-    const toSend = initial.length === 0 ? null : initial;
-    dispatcher.dispatch({
-      type: 'UPDATE_ON_SECOND_FILTER',
-      payload: toSend
-    });
-  }, [storeContexSidebar, selectedJobs, dispatcher]);
+  const { resultsFilter } = useFilter(selectedJobs, storeContexSidebar);
 
-  const onCancelClick = () => {
-    dispatcher.dispatch({
-      type: 'SET_INITIAL_FILTERED_JOBS',
-      payload: []
-    });
+  useEffect(() => {
     dispatcher.dispatch({
       type: 'UPDATE_ON_SECOND_FILTER',
-      payload: []
+      payload: resultsFilter
     });
     dispatcher.dispatch({
-      type: 'TOGGLE_RESULTS',
-      payload: false
+      type: 'SET_CURRENT_PAGE',
+      payload: 0
     });
-  };
-  const onClearClick = () => {
-    dispatchContexSidebar.dispatch({
-      type: 'RESET'
-    });
-    dispatcher.dispatch({
-      type: 'UPDATE_ON_SECOND_FILTER',
-      payload: selectedJobs
-    });
-  };
+  }, [dispatcher, resultsFilter]);
+
   const onRefineClick = () => {
     setRefined(!refined);
-
-    // setRefine('show-desktop')
   };
-  useEffect(() => {
-    if (!refined) {
-      setClassname('show-desktop');
-    } else {
-      setClassname('');
-    }
-  }, [refined]);
   return (
     <FiltersDispatch.Provider value={dispatchContexSidebar}>
       <FiltersState.Provider value={storeContexSidebar}>
@@ -91,11 +42,11 @@ function SidebarFilters() {
           <div className="hide-desktop">
             <Refine onRefineClick={onRefineClick} refined={refined} />
           </div>
-          <div className={showClassname}>
+          <div className={refined ? '' : 'show-desktop'}>
             <div className="container-wide bg-white">
               <div className="pure-g justify-between">
                 <div className="pure-u-1">
-                  <ClearAndBack onCancelClick={onCancelClick} />
+                  <ClearAndBack />
                   <h2>Refine</h2>
                   {sidebarFilters.map(filter => {
                     return (
@@ -107,7 +58,7 @@ function SidebarFilters() {
                       />
                     );
                   })}
-                  <ClearAllSecondaryFilters onClearClick={onClearClick} />
+                  <ClearAllSecondaryFilters />
                 </div>
               </div>
             </div>

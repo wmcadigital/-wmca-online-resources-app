@@ -26,8 +26,8 @@ function FiltersGroupInitial(props) {
 
   return (
     <>
-      <div className="wmcads-fe-radios">
-        <span class="wmcads-fe-radios__desc">{displayName}</span>
+      <fieldset aria-required="true" className="wmcads-fe-fieldset">
+        <legend class="wmcads-fe-fieldset__legend">{displayName}</legend>
         {filters &&
           filters.map((filter, i) => {
             return (
@@ -42,7 +42,7 @@ function FiltersGroupInitial(props) {
               )
             );
           })}
-      </div>
+      </fieldset>
     </>
   );
 }

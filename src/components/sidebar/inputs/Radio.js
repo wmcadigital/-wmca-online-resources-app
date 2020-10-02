@@ -19,6 +19,7 @@ const Radio = props => {
         onChange={e => {
           onInputChange(e);
         }}
+        required
         type="radio"
       />
       <span className="wmcads-fe-radios__checkmark" />

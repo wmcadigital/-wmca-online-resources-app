@@ -41,10 +41,8 @@ function FiltersGroup(props) {
     setAllFilters(filtersToSort.sort());
   }, [selectedJobs, name]);
   return (
-    <div className="wmca-form wdgt">
-      <label name={name} id={name} className="wmca-form-label filter-title">
-        {`${displayName}`}
-      </label>
+    <fieldset aria-required="true" className="wmcads-fe-fieldset">
+      <legend class="wmcads-fe-fieldset__legend">{`${displayName}`}</legend>
       {filters && name === 'Category' ? (
         <Dropdown setSelectedFilters={setSelectedFilters} selectValue={filters} parent={name} />
       ) : (
@@ -63,7 +61,7 @@ function FiltersGroup(props) {
           );
         })
       )}
-    </div>
+    </fieldset>
   );
 }
 

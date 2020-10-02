@@ -9,22 +9,20 @@ const Radio = props => {
     setSelectedFilters(e.target.value, parent);
   };
   return (
-    <span className="wmca-form__radio pure-u-1" id={`radio_${parent}`}>
-      <label htmlFor={`radio_${int}_${parent}`} className="wmca-form__radio-label">
-        {name}
-        <input
-          type="radio"
-          name={`radio_${parent}`}
-          value={name || 'Missing'}
-          id={`radio_${int}_${parent}`}
-          onChange={e => {
-            onInputChange(e);
-          }}
-          checked={filterState.store[parent] === name}
-        />
-        <span className="wmca-form__radio-checkmark"> </span>
-      </label>
-    </span>
+    <label className="wmcads-fe-radios__container">
+      {name}
+      <input
+        className="wmcads-fe-radios__input"
+        value={name || 'Missing'}
+        checked={filterState.store[parent] === name}
+        name={`radio_${parent}`}
+        onChange={e => {
+          onInputChange(e);
+        }}
+        type="radio"
+      />
+      <span className="wmcads-fe-radios__checkmark" />
+    </label>
   );
 };
 

@@ -26,10 +26,8 @@ function FiltersGroupInitial(props) {
 
   return (
     <>
-      <div className="wmca-form wdgt">
-        <label htmlFor="radio" className="wmca-form-label filter-title">
-          {displayName}
-        </label>
+      <div className="wmcads-fe-radios">
+        <span class="wmcads-fe-radios__desc">{displayName}</span>
         {filters &&
           filters.map((filter, i) => {
             return (

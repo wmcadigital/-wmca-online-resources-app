@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FiltersState } from '../SidebarStore';
 
 const Radio = props => {
-  const { name, parent, int, setSelectedFilters } = props;
+  const { name, parent, setSelectedFilters } = props;
   const filterState = useContext(FiltersState);
   const onInputChange = e => {
     setSelectedFilters(e.target.value, parent);

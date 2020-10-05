@@ -27,7 +27,7 @@ function FiltersGroupInitial(props) {
   return (
     <>
       <fieldset aria-required="true" className="wmcads-fe-fieldset">
-        <legend class="wmcads-fe-fieldset__legend">{displayName}</legend>
+        <legend className="wmcads-fe-fieldset__legend">{displayName}</legend>
         {filters &&
           filters.map((filter, i) => {
             return (

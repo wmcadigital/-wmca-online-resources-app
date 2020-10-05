@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ResultItem(props) {
-  const { name, provider, url, link, summary } = props;
+  const { name, provider, link, summary } = props;
   const externalLink =
     link.indexOf('http://') === 0 || link.indexOf('https://') === 0 ? link : `//${link}`;
 
@@ -40,7 +40,6 @@ function ResultItem(props) {
 ResultItem.propTypes = {
   name: PropTypes.string,
   provider: PropTypes.string,
-  url: PropTypes.string,
   link: PropTypes.string,
   summary: PropTypes.string
 };
@@ -48,7 +47,6 @@ ResultItem.propTypes = {
 ResultItem.defaultProps = {
   name: null,
   provider: null,
-  url: null,
   link: null,
   summary: null
 };

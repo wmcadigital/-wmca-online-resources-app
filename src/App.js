@@ -43,7 +43,7 @@ function App() {
               <div className="pure-u-1 pure-u-md-1-4">
                 <Sidebar />
               </div>
-              <div className="pure-u-1 pure-u-md-5-8" id="stories">
+              <div className="pure-u-1 pure-u-md-5-8" id="stories" aria-live="polite">
                 {storeContex.store.showResults && <Results />}
               </div>
             </div>

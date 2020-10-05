@@ -26,10 +26,8 @@ function FiltersGroupInitial(props) {
 
   return (
     <>
-      <div className="wmca-form wdgt">
-        <label htmlFor="radio" className="wmca-form-label filter-title">
-          {displayName}
-        </label>
+      <fieldset aria-required="true" className="wmcads-fe-fieldset">
+        <legend className="wmcads-fe-fieldset__legend">{displayName}</legend>
         {filters &&
           filters.map((filter, i) => {
             return (
@@ -44,7 +42,7 @@ function FiltersGroupInitial(props) {
               )
             );
           })}
-      </div>
+      </fieldset>
     </>
   );
 }

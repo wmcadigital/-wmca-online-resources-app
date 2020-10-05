@@ -48,6 +48,10 @@ function SidebarFilters() {
       payload: toSend
     });
   }, [storeContexSidebar, selectedJobs, dispatcher]);
+  // console.log(storeContexSidebar.store.Age.length);
+  // console.log(storeContexSidebar.store.SkillLevel.length);
+  // console.log(selectedJobs.length);
+  
 
   const onCancelClick = () => {
     dispatcher.dispatch({

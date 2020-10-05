@@ -67,6 +67,7 @@ function SidebarFiltersInitial() {
                 <button
                   type="submit"
                   className={`btn-primary solid ${canSubmit ? 'hasFilters' : 'disabled'}`}
+                  aria-disabled={canSubmit ? 'false' : 'true'}
                   onClick={() => onClick()}
                 >
                   <span>Search</span>

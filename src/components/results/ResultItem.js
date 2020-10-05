@@ -12,20 +12,23 @@ function ResultItem(props) {
         <h2>{name}</h2>
         <ul>
           <li>
-            <span className="highlight">Provider </span>
-            <a className="btn-secondary" href={externalLink}>
-              {provider}
-            </a>
-            <i className="icon-link-external icon-large" />
+            <span className="highlight">Provider: </span>
+            {provider}
           </li>
         </ul>
         <p>{summary}</p>
         <div className="text-right">
           <p>
-            <a className="btn-secondary" href={url}>
-              Read more
+            <a
+              className="btn-secondary"
+              href={externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Find out more about {name}"
+            >
+              Find out more on the {provider} website
             </a>
-            <i className="icon-link-external icon-large" />
+            <i aria-hidden="true" className="icon-link-external icon-large" />
           </p>
         </div>
       </article>

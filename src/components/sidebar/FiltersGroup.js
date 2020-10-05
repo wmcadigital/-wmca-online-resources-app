@@ -42,7 +42,12 @@ function FiltersGroup(props) {
   }, [selectedJobs, name]);
   return (
     <fieldset aria-required="true" className="wmcads-fe-fieldset">
-      <legend class="wmcads-fe-fieldset__legend">{`${displayName}`}</legend>
+      {filters && name === 'Category' ? (
+        <label htmlFor={name}>{`${displayName}`}</label>
+      ) : (
+        <legend className="wmcads-fe-fieldset__legend">{`${displayName}`}</legend>
+      )}
+
       {filters && name === 'Category' ? (
         <Dropdown setSelectedFilters={setSelectedFilters} selectValue={filters} parent={name} />
       ) : (

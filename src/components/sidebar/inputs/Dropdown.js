@@ -12,29 +12,27 @@ function DropDown(props) {
   }
 
   return (
-    <div className="pure-u-1">
-      <div className="wmca-form wdgt">
-        <select
-          value={filterState.store[parent]}
-          id={parent}
-          onChange={e => {
-            onSlectedChange(e);
-          }}
-          onBlur={e => {
-            onSlectedChange(e);
-          }}
-        >
-          <option value={DEFAULT}>Select</option>
-          {selectValue &&
-            selectValue.map(select => {
-              return (
-                <option value={select} key={`select_${select}`}>
-                  {select}
-                </option>
-              );
-            })}
-        </select>
-      </div>
+    <div className="wmca-form wdgt">
+      <select
+        value={filterState.store[parent]}
+        id={parent}
+        onChange={e => {
+          onSlectedChange(e);
+        }}
+        onBlur={e => {
+          onSlectedChange(e);
+        }}
+      >
+        <option value={DEFAULT}>Select</option>
+        {selectValue &&
+          selectValue.map(select => {
+            return (
+              <option value={select} key={`select_${select}`}>
+                {select}
+              </option>
+            );
+          })}
+      </select>
     </div>
   );
 }

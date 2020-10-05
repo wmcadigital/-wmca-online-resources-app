@@ -9,7 +9,7 @@ function ResultItem(props) {
   return (
     <>
       <article className="wdgt">
-        <h2>{name}</h2>
+        <h3>{name}</h3>
         <ul>
           <li>
             <span className="highlight">Provider: </span>
